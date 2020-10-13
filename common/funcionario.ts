@@ -1,10 +1,12 @@
+import { Veiculo } from './veiculo';
+
 export class Funcionario {
 
     nome: String;
     cpf: String;
     funcao: String;
     telefone: Number;
-    numVeiculos: Number;
+    veiculos: Veiculo[];
 
     constructor () {
         this.clean();
@@ -15,7 +17,7 @@ export class Funcionario {
         this.cpf = "";
         this.funcao = "";
         this.telefone = 0;
-        this.numVeiculos = 0;
+        this.veiculos = [];
     }
 
     clone(): Funcionario {
@@ -31,7 +33,7 @@ export class Funcionario {
         this.cpf = from.cpf;
         this.funcao = from.funcao;
         this.telefone = from.telefone;
-        this.numVeiculos = from.numVeiculos;
+        this.veiculos = from.veiculos;
     } 
     
 
