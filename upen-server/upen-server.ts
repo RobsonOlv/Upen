@@ -1,7 +1,7 @@
 import express = require('express');
 import bodyParser = require("body-parser");
 
-import { routes } from './routes';
+import { routes } from './routes'
 
 var upenServer = express();
 
