@@ -1,0 +1,119 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.pageName{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabelaCampos{
+    width:1060px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.listaPneus{
+    width: 1060px;
+    height: 600px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: lightgrey;
+    overflow: auto;
+    padding-top: 6px;
+}
+
+.bloco{
+    width: 780px;
+    /*margin-top: 6px;
+    background: #500997;*/
+    background: #8B5095;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2.5px;
+    border-color: black;
+}
+
+.blocoPosition{
+    margin-left: 140px;
+    width: 880px;
+    margin-bottom: 6px;
+}
+
+.campos{
+    color:white;
+    width: 780px;
+    margin-left: 140px;
+    margin-top: 10px;
+}
+
+.elementoCampo{
+    display: inline-block;
+    width: 140px;
+    height: 8px;
+    margin-left: 12.8px;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.bloco:hover {
+    color: black;
+    background: #500997;
+}
+
+.pneuInfo{
+    padding-top: 2px;
+    font-size: 16px;
+    color: white;
+}
+
+.divPneuInfo{
+    display: inline-block;
+    width: 140px;
+    height: 8px;
+    margin-left: 12px;
+    margin-bottom: 14px;
+}
+
+.divPneuInfo > ng-template {
+    position: relative;
+    font-family: Roboto;
+    color: red;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    padding-top: 2px;
+    padding-left: 22px;
+    color: red;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-button{
+    color: #666666;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c;
+}

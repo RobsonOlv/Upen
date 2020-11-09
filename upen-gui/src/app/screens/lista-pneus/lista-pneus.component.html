@@ -1,1 +1,40 @@
-<p>lista-pneus works!</p>
+<html >
+    <body>
+        <div class="pageName">
+            <h1>Lista de Pneus</h1>
+        </div>
+
+        <div class="tabelaCampos">
+            <table>
+                <div class="campos" >
+                    <tr>
+                        <td class="elementoCampo">ID</td>
+                        <td class="elementoCampo">Atribuído</td>
+                        <td class="elementoCampo">Marca</td>
+                        <td class="elementoCampo">Aro</td>
+                        <td class="elementoCampo">Data</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+        <div class="listaPneus">
+            <table *ngFor="let a of pneus" >
+                <div class="blocoPosition">
+                    <tr>
+                        <a href="http://localhost:4200/pneus/{{a.id}}">
+                            <div class="bloco">
+                                <tr class="pneus">
+                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.id}}</td></div>
+                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.atribuicao}}</td></div>
+                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.marca}}</td></div>
+                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.aro}}</td></div>
+                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.data}}</td></div>
+                                </tr>
+                            </div>  
+                        </a>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </body>
+</html>
