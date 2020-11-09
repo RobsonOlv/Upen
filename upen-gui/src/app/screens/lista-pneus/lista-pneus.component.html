@@ -25,16 +25,141 @@
                             <div class="bloco">
                                 <tr class="pneus">
                                     <div class="divPneuInfo"><td class = "pneuInfo">{{a.id}}</td></div>
-                                    <div class="divPneuInfo"><td class = "pneuInfo">{{a.atribuicao}}</td></div>
+                                    <div class="divPneuInfo"><td *ngIf="pneu.atribuicao[3];else elseBlock" class="pneu-atribuicao-true">Sim</td><ng-template #elseBlock><td class="pneu-atribuicao-false">Não</td></ng-template></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo">{{a.marca}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo">{{a.aro}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo">{{a.data}}</td></div>
                                 </tr>
                             </div>  
                         </a>
+                        <!--<td class="botaotd"><button class="btn" (click)="deletarPneu(a.id)"><i class="fa fa-trash"></i></button></td>-->
                     </tr>
                 </div>
             </table>
         </div>
+        <div class="divBotaoInserir"> 
+            <button type="button" class="botaoAdicionar" (click)="abrirPopup()" class="botaoInserirPneu">+</button>
+        </div>
+
+        <!-- The Modal -->
+    <div class="modal" id="myModal" [ngClass]="{'show': popupCadastro}">
+            <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <div class="modal-title" ><h4 class="titlePopUp">Cadastro de Pneu</h4></div>
+                    <div class="closeDiv"><button type="button" class="botaoClose" (click)="fecharPopup()" >x</button></div>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" (ngModelChange)="resetidDuplicado()" type="text" placeholder="ID" [(ngModel)]="pneu.id" />
+                                </td>
+                                <td *ngIf = "checkStringNotFilled(pneu.id) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira o ID
+                                    </td> 
+                                    <td *ngIf = "idduplicado"  class="campoNaoPreenchido" >
+                                        ID já cadastrado
+                                    </td> 
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="text" placeholder="Marca" [(ngModel)]="pneu.marca">
+                                </td>
+                                <td *ngIf = "checkStringNotFilled(pneu.marca) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a marca
+                                </td> 
+                            </tr>
+                        </div>
+                            <tr>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="Aro" [(ngModel)]="pneu.aro">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.aro) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira o aro
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="Largura" [(ngModel)]="pneu.largura">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.largura) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a largura
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="Altura" [(ngModel)]="pneu.altura">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.altura) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a altura
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="Capacidade" [(ngModel)]="pneu.capacidade">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.capacidade) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a capacidade
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="km/h" [(ngModel)]="pneu.kmh">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.kmh) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira o valor para km/h
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="number" placeholder="Treadwear" [(ngModel)]="pneu.treadwear">
+                                </td>
+                                <td *ngIf = "checkNumberNotFilled(pneu.treadwear) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a treadwear
+                                </td>
+                            </tr>
+                        </div>
+                        <div class="linhaCadastro">
+                            <tr>
+                                <td>
+                                    <input class="inputTextCadastro" type="date" placeholder="Data do Pneu" [(ngModel)]="pneu.data">
+                                </td>
+                                <td *ngIf = "checkStringNotFilled(pneu.data) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira a data
+                                </td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="botaoCadastrar" (click)="adicionarPneu(pneu)"  data-dismiss="modal">Cadastrar</button>
+                </div>
+        
+            </div>
+            </div>
+        </div>
+
     </body>
 </html>
