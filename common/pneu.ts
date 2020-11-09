@@ -20,12 +20,12 @@ export class Pneu {
         this.id = "";
         this.marca = "";
         this.data = "";
-        this.aro = 0;
-        this.largura = 0;
-        this.capacidade = 0;
-        this.altura = 0;
-        this.kmh = 0;
-        this.treadwear = 0;
+        this.aro;
+        this.largura;
+        this.capacidade;
+        this.altura;
+        this.kmh;
+        this.treadwear;
         this.eventos = [];
         this.atribuicao = ["", "", "", false]
     }

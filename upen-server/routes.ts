@@ -18,52 +18,54 @@ const cdVeiculo: CadastroVeiculo = new CadastroVeiculo();
 
 // ROTAS DE LISTA PNEU / PNEU ELEMENTO
 
-routes.get('/pneus/:id', function (req: Request, res: Response) {
-    res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
+routes.get('/pneus', function (req: Request, res: Response) {
+  res.send(JSON.stringify(cdPneu.getPneus()));
 })
 
 routes.get('/pneus/:id', function (req: Request, res: Response) {
-    res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
-  })
+  res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
+})
 
 routes.post('/pneu', function (req: Request, res: Response) {
-    var confirmar: Pneu = <Pneu> req.body;
-    var pneu = cdPneu.cadastrar(confirmar);
-    if(pneu == "success"){
-      var historico = cdHistorico.cadastrar(confirmar.id,"Cadastrou","Pneu"); 
-      if (historico) {res.send({"success": "cadastro de pneu com sucesso"});}
-    } else {
-      res.status(404).send({"falha": "cadastro de pneu falhou"});
-    }
+  var confirmar: Pneu = <Pneu> req.body;
+  var pneu = cdPneu.cadastrar(confirmar);
+  if(pneu == "success"){
+    //var historico = cdHistorico.cadastrar(confirmar.id,"Cadastrou","Pneu");
+    var historico = true;  
+    if (historico) {res.send({"success": "cadastro de pneu com sucesso"});}
+  } else {
+    res.send({"failed": "cadastro de pneu falhou"});
+  }
 })
 
 routes.put('/pneu', function (req: Request, res: Response) {
-    var pneu: Pneu = <Pneu> req.body;
-    pneu = cdPneu.atualizar(pneu);
-    if (pneu) {
-      res.send({"success": "O pneu foi atualizado com sucesso"});
-    } else {
-        res.status(404).send({"falha": "Atualizacão de pneu falhou"});
-    }
+  var pneu: Pneu = <Pneu> req.body;
+  pneu = cdPneu.atualizar(pneu);
+  if (pneu) {
+    res.send({"success": "O pneu foi atualizado com sucesso"});
+  } else {
+    res.send({"failure": "O pneu não pode ser atualizado"});
+  }
 })
 
+
 routes.delete('/pneu/:id', function (req: Request, res: Response){
-    var id = req.params.id
-      var aux = cdPneu.remover(id);
-      if(aux == "success"){
-        var historico = cdHistorico.cadastrar(id,"Removeu","Pneu"); 
-        if (historico) {res.send({"success": "O pneu foi removido com sucesso"})}
-      } else {
-        res.status(404).send({"falha": "remoção de pneu falhou"});
-      }
-  })
+var id = req.params.id
+  var aux = cdPneu.remover(id);
+  if(aux == "success"){
+    var historico = cdHistorico.cadastrar(id,"Removeu","Pneu"); 
+    if (historico) {res.send({"success": "O pneu foi removido com sucesso"})}
+  } else {
+    res.send({"failure": "O pneu não pode ser removido"});
+  }
+})
 
 routes.get('/pneu/cadastro', (req: Request, res: Response) => {
-    var { id } = req.body;
+  var { id } = req.body;
 
-    var bool = cdPneu.idNaoCadastrado(id);
-    if(!bool) res.send({"success": "pneu cadastrado"});
-    else res.status(404).send({"failure": "pneu nao cadastrado"});
+  var bool = cdPneu.idNaoCadastrado(id);
+  if(!bool) res.send({"success": "pneu cadastrado"});
+  else res.send({"failure": "pneu nao cadastrado"});
 })
 
 // ROTAS DE LISTA VEICULO
@@ -76,7 +78,8 @@ routes.post('/veiculos', (req: Request, res: Response) => {
     var vel: Veiculo = <Veiculo> req.body;
     var veiculo = cdVeiculo.cadastrarVeiculo(vel);
     if(veiculo) {
-        var historico = cdHistorico.cadastrar(vel.placa,"Cadastrou","Veiculo"); 
+        //var historico = cdHistorico.cadastrar(vel.placa,"Cadastrou","Veiculo");
+        var historico = true;
         if (historico) {res.send({ veiculo });}
         else { res.status(404).send({"falha": "Cadastro de veiculo falhou"});}
     }
