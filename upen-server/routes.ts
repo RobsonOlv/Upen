@@ -53,7 +53,8 @@ routes.delete('/pneu/:id', function (req: Request, res: Response){
 var id = req.params.id
   var aux = cdPneu.remover(id);
   if(aux == "success"){
-    var historico = cdHistorico.cadastrar(id,"Removeu","Pneu"); 
+    //var historico = cdHistorico.cadastrar(id,"Removeu","Pneu"); 
+    var historico = true; 
     if (historico) {res.send({"success": "O pneu foi removido com sucesso"})}
   } else {
     res.send({"failure": "O pneu não pode ser removido"});

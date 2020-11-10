@@ -23,6 +23,14 @@ export class ListaPneusService {
         );
     }
 
+    deletar(id: String): Observable<any> {
+      return this.http.delete<any>(this.servURL + "/pneu/" + id)
+      .pipe( 
+          retry(2),
+          map( res => {if (res.success) {return id } else {return null;}} )
+          ); 
+    }
+
     getPneu(id: string): Observable<Pneu> {
       return this.http.get<Pneu>(this.servURL + "/pneus/" + id)
         .pipe(

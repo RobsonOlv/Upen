@@ -58,6 +58,23 @@ export class ListaPneusComponent implements OnInit {
       );
   }
 
+  deletarPneu(a: string): void{
+    this.ListaPneusService.deletar(a)
+      .subscribe(
+        ar => {
+          if(ar != null){
+            alert("Pneu deletado");
+            for (let i = 0; i < this.pneus.length; i++) {
+              if (this.pneus[i].id == a) this.pneus.splice(i, 1); 
+            }
+          } else {
+            alert("Pneu não pode ser deletado");
+          }
+        },
+        msg => { alert(msg.message); }
+      ); 
+  }
+
   checkAllFilled(): boolean{
     return (!this.checkStringNotFilled(this.pneu.id) && !this.checkStringNotFilled(this.pneu.marca) &&
       !this.checkNumberNotFilled(this.pneu.aro) && !this.checkNumberNotFilled(this.pneu.largura)

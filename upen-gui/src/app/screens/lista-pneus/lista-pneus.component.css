@@ -143,37 +143,15 @@ body {
     background: #8c8c8c;
 }
 
-/*.botaoRemover:hover{
-    background: #8B5095;
-    color: white;
-}*/
 
-.botaoInserirPneu{
-    width: 44px;
-    height: 44px;
-    position: fixed;
-    bottom: 6%;
-    border-radius: 50%;
-    right: 4%;
-    background: white;     
-
-    border-style: solid;
-    border-width: 4px;
-    border-color: black;
-
-    border-color: #8B5095;
-
-    cursor: pointer;
-
-    font-size: 25px;
-    
+.fa-plus-circle:hover {
+    color: #8B5095;
 }
 
-.botaoInserirPneu:hover{
-    background-color:  #8B5095;
-    color:white;
+.divBotaoInserir{
+    position: absolute;
+    left: 88%;
 }
-
 .btn{
     border: solid;
     color: black;
