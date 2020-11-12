@@ -1,0 +1,90 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+    background-color: #362F36;
+}
+
+.pageName {
+    width: 100%;
+    height: 30px;   
+    text-align: center;
+    color: white;
+    margin: 10px 0;
+}
+
+.tableAtributes {
+    width: 920px;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 14pt;
+    min-width: 400px;
+}
+
+.tableAtributes tr {
+    color: rgb(189, 184, 184);
+    text-align: center;
+    font-weight: bold;
+}
+
+.tableAtributes th{
+    width: 172px;
+    margin: 12px 12px;
+}
+
+
+.listFuncionarios {
+    width: 940px;
+    height: auto;
+    min-height: 600px;
+    margin: 0 auto;
+    background: gray;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+}
+
+.tableFuncionarios {
+    border-collapse: collapse;
+    width: 920px;
+    min-width: 400px;
+    max-height: 580px;
+    font-size: 12pt;
+    margin: 12px 12px;
+    padding: 15px 0px;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+
+.tableFuncionarios td{
+    display: inline-block;
+    width: 172px;
+    margin: 10px 0px;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+}
+
+.blockList {
+    width: 900px;
+    background: salmon;
+    margin: 2px 0;
+    border-style: groove;
+    border-color: black;
+    border-radius: 10px 10px;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+/* end */ 
