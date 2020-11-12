@@ -5,7 +5,7 @@ export class Pneu {
     aro: number;
     largura: number;
     capacidade: number;
-    altura: number;
+    custo: number;
     kmh: number;
     treadwear: number;
     atribuicao: [string, string, string, boolean];
@@ -23,7 +23,7 @@ export class Pneu {
         this.aro;
         this.largura;
         this.capacidade;
-        this.altura;
+        this.custo;
         this.kmh;
         this.treadwear;
         this.eventos = [];
@@ -43,7 +43,7 @@ export class Pneu {
         this.aro = from.aro;
         this.largura = from.largura;
         this.capacidade = from.capacidade;
-        this.altura = from.altura;
+        this.custo = from.custo;
         this.kmh = from.kmh;
         this.treadwear = from.treadwear;
         this.atribuicao = from.atribuicao;

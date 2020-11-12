@@ -3,7 +3,7 @@
 
 
 body {
-    background: rgba(0, 0, 0, 0.72);
+    background: #362f36;
 }
 
 .pageName{
@@ -149,9 +149,10 @@ body {
 }
 
 .divBotaoInserir{
-    position: absolute;
-    left: 88%;
+    position: fixed;
+    right: 10%;
 }
+
 .btn{
     border: solid;
     color: black;
@@ -159,7 +160,6 @@ body {
     border: black;
     cursor: pointer;
     padding: 0px;
-
     margin-bottom: 4.8px;
     margin-left: 12px;
 }

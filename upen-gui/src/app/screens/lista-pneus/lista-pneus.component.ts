@@ -47,7 +47,7 @@ export class ListaPneusComponent implements OnInit {
           if (ar) {
             this.pneus.push(ar);
             this.pneu = new Pneu();
-            alert("Pneu cadastrado");
+            //alert("Pneu cadastrado");
             this.botaoCadastrarPressionado = false;
             this.fecharPopup();
           } else {
@@ -78,7 +78,7 @@ export class ListaPneusComponent implements OnInit {
   checkAllFilled(): boolean{
     return (!this.checkStringNotFilled(this.pneu.id) && !this.checkStringNotFilled(this.pneu.marca) &&
       !this.checkNumberNotFilled(this.pneu.aro) && !this.checkNumberNotFilled(this.pneu.largura)
-      && !this.checkNumberNotFilled(this.pneu.altura)) && !this.checkNumberNotFilled(this.pneu.capacidade) && 
+      && !this.checkNumberNotFilled(this.pneu.custo)) && !this.checkNumberNotFilled(this.pneu.capacidade) && 
       !this.checkNumberNotFilled(this.pneu.kmh) && !this.checkNumberNotFilled(this.pneu.treadwear) && !this.checkStringNotFilled(this.pneu.data);
   }
 
@@ -87,7 +87,7 @@ export class ListaPneusComponent implements OnInit {
   }
 
   checkNumberNotFilled(n: number) : boolean {
-    return(n == 0);
+    return(n == undefined);
   }
 
   resetidDuplicado() {
