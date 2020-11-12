@@ -1,27 +1,41 @@
-<p>funcionario works!</p>
 <body>
     <div class = "pageName">
         <h3>Lista de Funcionários</h3>
     </div>
 
-    <div class="tableAtributes">
-        <table>
-                <tr>
-                    <th id="nome">Nome</th>
-                    <th id="cpf">CPF</th>
-                    <th id="telefone">Telefone</th>
-                    <th id="funcao">Função</th>
-                    <th id="numVeic">Num. de Veículos</th>
-                </tr>
-        </table>
-    </div>
-
-    <div class="listFuncionarios">
-        <div class="tableFuncionarios">
-
+    <div class="container-list">
+        <div class="tableAtributes">
+            <table>
+                    <tr>
+                        <th id="nome">Nome</th>
+                        <th id="cpf">CPF</th>
+                        <th id="telefone">Telefone</th>
+                        <th id="funcao">Função</th>
+                        <th id="veiculos">Veículos atrib.</th>
+                    </tr>
+            </table>
         </div>
 
-
+        <div class="listFuncionarios">
+            <div class="tableFuncionarios">
+                <table>
+                        <tr *ngFor="let f of funcL" name="funclist">
+                            <div class="blockList">
+                            <td name="nomelist">{{f.nome}}</td>
+                            <td name="cpflist">{{f.cpf}}</td>
+                            <td name="telefonelist">{{f.telefone}}</td>
+                            <td name="funcaolist">{{f.funcao}}</td>
+                            <td>{{f.veiculos.length}}</td>
+                            </div>
+                        </tr>
+                </table>
+            </div>       
+        </div>
+    
+        <div class="addfunc">
+            <button id="cad" mat-mini-fab color="white" (click)="openDialog()" name="dialogcadastrobutton">+</button>
+        </div>
     </div>
-
-</body> 
+    
+    
+</body>

@@ -4,11 +4,16 @@ export class CadastroFuncionario {
     funcionarios: Funcionario[] = []
 
     cadastrarFuncionario(func: Funcionario): Funcionario {
-         throw 'not implemented yet'
-    }
+          var result = null;
+          if (this.cpfNaoCadastrado(func.cpf)) {
+          result = new Funcionario();
+          result.copyFrom(func);
+          this.funcionarios.push(result)
+          }
+          return result;    }
 
     cpfNaoCadastrado(cpf: String): Boolean {
-         throw 'not implemented yet'
+          return !this.funcionarios.find(a=> a.cpf == cpf);
 
     }
 
@@ -17,7 +22,7 @@ export class CadastroFuncionario {
     }
 
     getFuncionarios(): Funcionario[] {
-         throw 'not implemented yet'
+          return this.funcionarios;
     }
 
 }
