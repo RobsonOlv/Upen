@@ -63,7 +63,6 @@ export class ListaPneusComponent implements OnInit {
       .subscribe(
         ar => {
           if(ar != null){
-            alert("Pneu deletado");
             for (let i = 0; i < this.pneus.length; i++) {
               if (this.pneus[i].id == a) this.pneus.splice(i, 1); 
             }

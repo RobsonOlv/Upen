@@ -12,7 +12,7 @@ let sameMarca = ((elem, marca) => elem.element(by.name('marcalist')).getText().t
 let sameAro = ((elem, aro) => elem.element(by.name('arolist')).getText().then(text => text === aro));
 let sameData = ((elem, data) => elem.element(by.name('datalist')).getText().then(text => text === data));
 
-
+let check = ((p) => p.then( a => a))
 let pAND = ((p,q,r,s,) => p.then(a => q.then(b => r.then(c => s.then(d =>(a && b && c && d ) )))))
 
 
@@ -54,6 +54,29 @@ defineSupportCode(function ({ Given, When, Then }) {
 
         await alltyres.filter(elem => pAND(sameId(elem,id),sameMarca(elem,marca), sameAro(elem, aro), sameData(elem, data))).then
                    (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
+
+    //DELETING TYRE WITH REGISTERED ID
+    Given(/^I can see a tyre with "id" "([^\"]*)" in the tyres list$/, async (id) => {
+        var allids : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameids = allids.filter(elem =>
+                                      elem.getText().then(text => text === id));
+        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
+
+
+    When(/^I try to delete tyre with "id" "([^\"]*)"$/, async(id) =>{
+        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));  
+        var sameids = alltyres.filter(elem => check(sameId(elem, id)));
+        await sameids.all(by.name('botaoRemover')).click();
+    });
+
+    Then(/^I can no longer see tyre with "id" "([^\"]*)" in the tyres list$/, async (id) => {
+        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));
+        var sameids = alltyres.filter(elem =>
+            elem.getText().then(text => text === id));
+        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+        
     });
 
 })
