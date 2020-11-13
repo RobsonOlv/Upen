@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Remover pneu permanentemente</h1>
+<div mat-dialog-content>Tem certeza que deseja remover pneu {{pneu.marca}} {{pneu.aro}} {{pneu.data}} de id {{pneu.id}} ?</div>
+<div mat-dialog-actions>
+  <div class="yesNoDivi">
+    <button mat-button type="button" mat-dialog-close>Não</button>
+    <button mat-button type="button" (click)="onClick()" mat-dialog-close>Sim</button>
+  </div>
+</div>

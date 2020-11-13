@@ -1,0 +1,56 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.btnremoval {
+    border: solid;
+    color: red;
+    padding: 12px 16px;
+    border: black;
+    cursor: pointer;
+    padding: 0px;
+    background: transparent;
+    margin-top: 4.8px;    
+    margin-bottom: 4.8px;
+    margin-left: 12px;
+}
+
+.blocoPosition1{
+    margin-left: 140px;
+    width: 880px;
+    margin-bottom: 6px;
+    
+}
+
+.buttonDiv{
+    background: blue;
+}
+.divButtons{
+    text-align: center;
+}
+.dinvInsideDiv{
+    width: 400px;
+    margin-left: 190px;
+}
+
+
+.btnRestore {
+    border: solid;
+    color: green;
+    padding: 12px 16px;
+    border: black;
+    cursor: pointer;
+    padding: 0px;
+    background: transparent;
+
+    margin-top: 4.8px; 
+    margin-bottom: 4.8px;
+    margin-left: 12px;
+}
+
+.removalText{
+    font-size: 10px;
+}
+
+
+.yesNoDivi{
+    margin: auto;
+}

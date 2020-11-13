@@ -28,7 +28,7 @@
                             <div class="bloco">
                                 <tr class="pneus">
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="idlist">{{a.id}}</td></div>
-                                    <div class="divPneuInfo"><td *ngIf="pneu.atribuicao[3];else elseBlock" class="pneu-atribuicao-true" name="atribuicaolist">true</td><ng-template #elseBlock><td class="pneu-atribuicao-false">false</td></ng-template></div>
+                                   <div class="divPneuInfo"><td *ngIf="pneu.atribuicao[3];else elseBlock" class="pneu-atribuicao-true" name="atribuicaolist">Sim</td><ng-template #elseBlock><td class="pneu-atribuicao-false">Não</td></ng-template></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="marcalist">{{a.marca}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="arolist">{{a.aro}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="datalist">{{a.data}}</td></div>
@@ -47,6 +47,7 @@
                 </span>
             </button>
         </div>
+        <div class="divBotaoAcessarLixeira"><a routerLink="/lixeirapneus" name="LixeiraPneus" routerLinkActive="active-button">  <button class="btnLixeira"><i class="fas fa-trash-alt fa"></i></button></a></div>
 
         <!-- The Modal -->
     <div class="modal" id="myModal" [ngClass]="{'show': popupCadastro}">
@@ -129,7 +130,7 @@
                         <div class="linhaCadastro">
                             <tr>
                                 <td>
-                                    <input class="inputTextCadastro" type="number" placeholder="km/h" name="kmhbox" [(ngModel)]="pneu.kmh">
+                                    <input class="inputTextCadastro" type="number" placeholder="Kilometragem" name="kmhbox" [(ngModel)]="pneu.kmh">
                                 </td>
                                 <td *ngIf = "checkNumberNotFilled(pneu.kmh) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
                                         Insira o valor para km/h

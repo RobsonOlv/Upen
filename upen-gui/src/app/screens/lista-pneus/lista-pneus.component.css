@@ -296,3 +296,36 @@ input[type=number] {
     font-size: 12px;
     padding-left: 4px; 
 }
+
+.btnLixeira{
+    width: 44px;
+    height: 44px;
+    position: fixed;
+    bottom: 6%;
+    border-radius: 50%;
+    right: 4%;
+    right: 92.4%;
+    background: white;     
+
+    border-style: solid;
+    border-width: 4px;
+    border-color: black;
+
+    border-color: #8B5095;
+    border-color: #4d4d4d;
+
+    color: #4d4d4d;;
+
+
+    cursor: pointer;
+
+    font-size: 25px;
+}
+
+.btnLixeira:hover{
+    background-color:  #8B5095;
+    background: #4d4d4d;
+    color:white;
+    /*width: 44px;
+    height: 44px;*/
+} 
