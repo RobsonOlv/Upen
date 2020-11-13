@@ -28,6 +28,12 @@ export class FuncionarioComponent implements OnInit {
       )
   }
 
+  deletarFuncionario(func: Funcionario) {
+    this.funcService.deletarFuncionario(func).subscribe();
+      var index = this.funcL.findIndex(f => f.cpf == func.cpf);
+      this.funcL.splice(index,1);
+
+}
 
   ngOnInit(): void {
     this.funcService.getFuncionarios().subscribe(

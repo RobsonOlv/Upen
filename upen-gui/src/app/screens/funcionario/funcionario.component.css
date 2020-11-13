@@ -106,3 +106,25 @@ body {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
+
+/* Botão do funcionário*/
+
+#buttonRow {
+    padding: 0;
+    margin: 0;
+    height: 15px;
+    width: 15px;
+}
+
+#button {
+    border: none;
+    background-color: salmon;
+}
+
+#img {
+    width: 15px;
+    height: 15px;
+}
+
+/* */
+

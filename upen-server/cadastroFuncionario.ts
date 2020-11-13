@@ -18,7 +18,12 @@ export class CadastroFuncionario {
     }
 
     deletarFuncionario(cpf: String): Boolean {
-         throw 'not implemented yet'
+      var num = this.funcionarios.findIndex(a=> a.cpf == cpf)
+      if (num >= 0) {
+          this.funcionarios.splice(num,1);
+          return true;
+      }
+      return false;
     }
 
     getFuncionarios(): Funcionario[] {
