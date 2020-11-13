@@ -43,4 +43,33 @@ defineSupportCode(function ({ Given, When, Then}) {
                 (elems => expect (Promise.resolve(elems.length)).to.eventually.equal(1));
 
     });
+
+    Given(/^I can see an employee with CPF "(\d*)" in the employees list$/, async(cpf) => {
+        await element(by.name('dialogcadastrobutton')).click();
+        await $("input[name='nomebox']").sendKeys(<string> "Junior");
+        await $("input[name='cpfbox']").sendKeys(<string> cpf);
+        await $("input[name='funcaobox']").sendKeys(<string> "Mecanico");
+        await $("input[name='telefonebox']").sendKeys(<number> 81988751222);
+        await element(by.name('cadastrarbutton')).click();
+        var allemployees: ElementArrayFinder = element.all(by.name('funclist'));
+        await allemployees.filter(elem => sameCPF(elem,cpf)).then
+                (elems => expect (Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
+
+    When(/^I try to remove the employee with CPF "(\d*)"$/, async(cpf) => {
+        var allcpfs: ElementArrayFinder = element.all(by.name('funclist'));
+        var samecpfs = allcpfs.filter( elem => sameCPF(elem,cpf));
+        // timeout necessário para o dialog fechar corretamente e poder clicar no botão de remoção.
+        await browser.sleep(1000)
+        await samecpfs.all(by.name('removerfuncbutton')).click();
+        
+    });
+
+    Then(/^I cannot see the employee with CPF "(\d*)" in the employees list$/, async(cpf) => {
+        var allcpfs: ElementArrayFinder = element.all(by.name('cpflist'));
+        var samecpfs = allcpfs.filter( elem => elem.getText().then(text => text ===cpf));
+        await samecpfs.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+
+    });
+
 })
