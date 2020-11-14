@@ -31,8 +31,6 @@ body {
 
 .bloco{
     width: 780px;
-    /*margin-top: 6px;
-    background: #500997;*/
     background: #8B5095;
     border-radius: 10px;
     border-style: solid;
@@ -104,19 +102,6 @@ body {
     text-indent: 10px;
 }
 
-.divPneuInfo > ng-template {
-    position: relative;
-    font-family: Roboto;
-    color: red;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 500;
-    padding-top: 2px;
-    padding-left: 22px;
-    color: red;
-}
-
-
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
@@ -184,6 +169,7 @@ body {
 .btnLixeira:hover{
     background-color:  #8B5095;
 }
+
 .modal.show{
     display: block;
     display: flex;
@@ -197,11 +183,9 @@ body {
 }
 
 .modal-content{
-    /*position: fixed;*/
     width: 400px;
     height: 480px;
     background: white;
-    /*opacity: 95%;*/
     padding: 0;
     border-radius: 2% 2% 0% 0%;
 }
@@ -216,15 +200,12 @@ body {
     background: transparent;
     width: 30px;
     height: 30px;
-    /*right: 0%;*/
     top: 0%;
 }
 
 .botaoClose{
     margin: auto;
-    /*background: black;*/
     background: transparent;
-
     width: 30px;
     height: 30px;
     border: none;
@@ -249,7 +230,6 @@ body {
 
 .modal-body{
     color: red;
-    /*background: green;*/
 }
 
 .titlePopUp{
@@ -277,11 +257,8 @@ body {
 }
 
 .linhaCadastro{
-    /*background: chocolate;*/
-    /*margin-left: 0px;*/
     width: 383px;
     margin-bottom: 10px;
-    /*background: red;*/
     padding-bottom: 0px;
 }
 
@@ -312,4 +289,3 @@ input[type=number] {
     font-size: 12px;
     padding-left: 4px; 
 }
-

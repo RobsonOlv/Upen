@@ -22,31 +22,43 @@
                 </div>
             </table>
         </div>     
-        <div class="global">
             <div class="listaPneus">
-                <table *ngFor="let a of lixeira, let i = index" >
+                <table *ngFor="let a of lixeira" >
                         <div class="blocoPosition">
                             <tr name="pneulist">
-                                <a href="https://www.youtube.com/watch?v=kfSQkZuIx84">
+                                <a href="http://localhost:4200/pneus/{{a.id}}">
                                     <div class="bloco">
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="idlist">{{displayData(a.id)}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="custolist">{{displayData(a.custo)}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="marcalist">{{displayData(a.marca)}}</td></div>
+                                            <div class="divPneuInfo"><td class="pneuInfo" name="idlist">{{a.id}}</td></div>
+                                            <div class="divPneuInfo"><td class="pneuInfo" name="custolist">{{a.custo}}</td></div>
+                                            <div class="divPneuInfo"><td class="pneuInfo" name="marcalist">{{a.marca}}</td></div>
                                             <div class="divPneuInfo"><td class="pneuInfo" name="arolist">{{a.aro}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="datalist">{{displayData(a.data)}}</td></div> 
+                                            <div class="divPneuInfo"><td class="pneuInfo" name="datalist">{{a.data}}</td></div> 
                                     </div> 
                                 </a>
                                 <div class="divButtons">
-                                    <div class="dinvInsideDiv">
-                                        <td class="hvr-icon-down"><button class="btnremoval" name="removerPermanenteButton" (click)="openDialog(a)" >Excluir permanentemente <span class="fa fa-trash hvr-icon"></span></button></td>
-                                        <td class="hvr-icon-up"><button class="btnRestore" name="restoreButton" (click)="restaurarPneu(a)" >Restaurar Pneu <i class="fas fa-trash-restore hvr-icon"></i></button></td>
+                                    <div class="divInsideDiv">
+                                        <td class="hvr-icon-down">
+                                            <button class="btnremoval" name="removerPermanenteButton" (click)="openDialog(a)">Excluir permanentemente
+                                                <span class="fa fa-trash hvr-icon"></span>
+                                            </button>
+                                        </td>
+                                        <td class="hvr-icon-up">
+                                            <button class="btnRestore" name="restoreButton" (click)="restaurarPneu(a)" >Restaurar Pneu 
+                                                <i class="fas fa-trash-restore hvr-icon"></i>
+                                            </button>
+                                        </td>
                                     </div>
                                 </div>
                             </tr> 
                         </div>
                 </table>
             </div>
-            <div class="divBotaoAcessarLixeira"><a routerLink="/pneus" name="LixeiraPneus" routerLinkActive="active-button">  <button class="btnLixeira"><i class="fas fa-arrow-left"></i></button></a></div>
-        </div>
+            <div class="divBotaoAcessarLixeira">
+                <a routerLink="/pneus" name="LixeiraPneus" routerLinkActive="active-button">  
+                    <button class="btnLixeira">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </a>
+            </div>
     </body>
 </html>_

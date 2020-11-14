@@ -21,18 +21,13 @@ export class LixeiraPneusComponent implements OnInit {
 
 
     listarLixeira():void{
-        this.listaPneusService.getLixeira().subscribe(
-        as => {this.lixeira = as;},
-        msg => {alert(msg.message);}
+        this.listaPneusService.getLixeira()
+          .subscribe(
+            as => {
+              this.lixeira = as;
+            },
+            msg => {alert(msg.message);}
         );
-    }
-
-    displayData(data:string): string {
-        if(data.length >= 13){
-            data = data.slice(0, 13);
-            data += "...";
-        }
-        return data;
     }
 
     openDialog(pneu: Pneu) {
@@ -41,12 +36,12 @@ export class LixeiraPneusComponent implements OnInit {
         if(id == "" || id == undefined) return;
         this.listaPneusService.deletarPneuPermanentemente(id).subscribe(
           ar => {
-            if(ar != null){ // retornado o index do veiculo a ser removido
+            if(ar != null){
               this.removerPorIndex(ar, pneu.id);
             }
           },
           msg => {
-            alert("Não foi possível remover o veículo permanentemente");
+            alert("Não foi possível remover o pneu permanentemente");
           }
         )
       });
@@ -62,8 +57,8 @@ export class LixeiraPneusComponent implements OnInit {
       }
     }
 
-    removerPorID(id: string): void{ // forma menos eficiente, entretanto assegura corretude
-      let index = this.lixeira.findIndex( v =>  v.id == id);
+    removerPorID(id: string): void{
+      let index = this.lixeira.findIndex(v =>  v.id == id);
       if(index != null) this.lixeira.splice(index, 1);
     }
 

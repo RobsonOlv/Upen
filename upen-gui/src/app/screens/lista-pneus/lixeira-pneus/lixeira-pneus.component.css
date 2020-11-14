@@ -20,17 +20,14 @@
     
 }
 
-.buttonDiv{
-    background: blue;
-}
 .divButtons{
     text-align: center;
 }
-.dinvInsideDiv{
+
+.divInsideDiv{
     width: 400px;
     margin-left: 190px;
 }
-
 
 .btnRestore {
     border: solid;
@@ -49,7 +46,6 @@
     font-size: 10px;
 }
 
-
-.yesNoDivi{
+.yesNoDiv{
     margin: auto;
 }

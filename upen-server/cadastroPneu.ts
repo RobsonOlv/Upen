@@ -31,7 +31,7 @@ export class CadastroDePneu {
         return result;
     }
 
-    remover(id: String): String{
+    remover(id: string): string{
         for(let i = 0; i < this.pneus.length; i++){
             if(this.pneus[i].id == id){
                 this.moverParaLixeira(this.pneus[i]);
@@ -67,7 +67,7 @@ export class CadastroDePneu {
         }
    }
 
-   removerPermanente(id :string): string{
+    removerPermanente(id :string): string{
     for(let i = 0; i < this.lixeiraPneus.length; i++){
         if(this.lixeiraPneus[i].id == id){
             this.lixeiraPneus.splice(i, 1);
@@ -86,5 +86,5 @@ export class CadastroDePneu {
                 }
         }
         return "failed";
-   }
+    }
 }

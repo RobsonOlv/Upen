@@ -8,7 +8,7 @@
         </div>
         <div class="tabelaCampos">
             <table>
-                <div class="campos" >
+                <div class="campos">
                     <tr>
                         <td class="elementoCampo">ID</td>
                         <td class="elementoCampo">Atribuído</td>
@@ -27,7 +27,7 @@
                             <div class="bloco">
                                 <tr class="pneus">
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="idlist">{{a.id}}</td></div>
-                                   <div class="divPneuInfo"><td *ngIf="pneu.atribuicao[3];else elseBlock" class="pneu-atribuicao-true" name="atribuicaolist">Sim</td><ng-template #elseBlock><td class="pneu-atribuicao-false">Não</td></ng-template></div>
+                                    <div class="divPneuInfo"><td *ngIf="pneu.atribuicao[3];else elseBlock" class="pneu-atribuicao-true" name="atribuicaolist">Sim</td><ng-template #elseBlock><td class="pneu-atribuicao-false">Não</td></ng-template></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="marcalist">{{a.marca}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="arolist">{{a.aro}}</td></div>
                                     <div class="divPneuInfo"><td class = "pneuInfo" name="datalist">{{a.data}}</td></div>
@@ -77,10 +77,10 @@
                                 </td>
                                 <td *ngIf = "checkStringNotFilled(pneu.id) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
                                         Insira o ID
-                                    </td> 
-                                    <td *ngIf = "idduplicado"  class="campoNaoPreenchido" name="duplicateId">
+                                </td> 
+                                <td *ngIf = "idduplicado"  class="campoNaoPreenchido" name="duplicateId">
                                         ID já cadastrado
-                                    </td> 
+                                </td> 
                             </tr>
                         </div>
                         <div class="linhaCadastro">

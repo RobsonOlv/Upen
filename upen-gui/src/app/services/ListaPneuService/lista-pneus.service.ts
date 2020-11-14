@@ -47,23 +47,24 @@ export class ListaPneusService {
 
     getLixeira(): Observable<Pneu[]> {
       return this.http.get<Pneu[]>(this.servURL + "/lixeirapneus")
-                .pipe(
-                  retry(2)
-              );
+        .pipe(
+          retry(2)
+        );
     }
 
     deletarPneuPermanentemente(id: string): Observable<any>{
-      return this.http.delete<any>(this.servURL + "/lixeirapneus/"+ id).pipe(
-          map( res => {if(res.success) {return id} else return null})
-      );
+      return this.http.delete<any>(this.servURL + "/lixeirapneus/"+ id)
+        .pipe(
+          retry(2),
+          map( res => {if(res.success) {return id} else {return null}})
+        );
     }
   
     restaurarPneu(pneu: Pneu): Observable<any>{
       return this.http.post<any>(this.servURL + "/lixeirapneus", pneu, {headers: this.headers})
         .pipe(
           retry(2),
-            map( res => {if (res.success) {return pneu;} else {return null}} )
-          );
-    }
-    
+          map( res => {if (res.success) {return pneu;} else {return null}} )
+        );
+    }  
 }
