@@ -10,11 +10,13 @@ import { CadastroVeiculo } from './cadastroVeiculo';
 import { CadastroHistorico} from './cadastroHistorico'
 import { CadastroDePneu } from './cadastroPneu';
 import { CadastroFuncionario } from './cadastroFuncionario';
+import { CadastroVeiculoMock } from "./cadastroVeiculoMock";
 
 const cdHistorico: CadastroHistorico = new CadastroHistorico()
 const cdFuncionario: CadastroFuncionario = new CadastroFuncionario();
 const cdPneu: CadastroDePneu = new CadastroDePneu();
 const cdVeiculo: CadastroVeiculo = new CadastroVeiculo(); 
+const cdVeiculoMock: CadastroVeiculoMock = new CadastroVeiculoMock
 
 // ROTAS DE LISTA PNEU / PNEU ELEMENTO
 
@@ -119,6 +121,20 @@ routes.post('/funcionarios', (req: Request, res: Response) => {
 
 });
 
+routes.put('/funcionarios/:id', (req: Request, res: Response) => {
+  var id = req.params.id;
+  var veiculo = <Veiculo> req.body;
+
+  var atrib = cdFuncionario.atribuirVeiculo(id, veiculo)
+
+  if (atrib) {
+    res.send({"success": "o veiculo foi devidamente atribuido."});
+  } else {
+    res.status(404).send({"failure": "o veiculo nao pode ser atribuido"});
+  }
+
+});
+
 routes.delete('/funcionarios/:id', (req: Request, res: Response) => {
   var id = req.params.id;
   var aux = cdFuncionario.deletarFuncionario(id);
@@ -149,5 +165,9 @@ routes.get('/veiculo', (req: Request, res: Response) => {
 
     res.send({ veiculo });
 });
+
+routes.get('/veiculosMock', (req: Request, res: Response) => {
+  res.send(JSON.stringify(cdVeiculoMock.listarVeiculos()))
+})
 
 export { routes };

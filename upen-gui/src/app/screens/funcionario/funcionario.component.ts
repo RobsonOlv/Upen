@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Funcionario } from '../../../../../common/funcionario'
 import { FuncionarioService } from '../../services/FuncionarioService/funcionario.service'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DialogCadastro } from './dialog-cadastro.component';
+import { DialogCadastro } from './dialogs/dialog-cadastro.component';
+import { DialogAtribuir } from './dialogs/dialog-atribuir.component';
 
 @Component({
   selector: 'app-funcionario',
@@ -42,8 +43,9 @@ export class FuncionarioComponent implements OnInit {
   }
 
   CadastroDialogRef: MatDialogRef<DialogCadastro>
+  AtribDialogRef: MatDialogRef<DialogAtribuir>
 
-  openDialog() {
+  openDialogCadastro() {
     this.CadastroDialogRef = this.dialog.open(DialogCadastro, {data:this.funcL});
 
     this.CadastroDialogRef.afterClosed().subscribe(result => 
@@ -54,5 +56,11 @@ export class FuncionarioComponent implements OnInit {
         
                      
   }
-  
+
+  openDialogAtrib(func: Funcionario) {
+
+    this.AtribDialogRef = this.dialog.open(DialogAtribuir, {data: func, height:"400px",width:"400px"});
+
+  }
+
 }

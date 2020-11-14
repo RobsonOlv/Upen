@@ -1,5 +1,5 @@
 import { Component, Inject } from "@angular/core";
-import { Funcionario } from '../../../../../common/funcionario'
+import { Funcionario } from '../../../../../../common/funcionario'
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';

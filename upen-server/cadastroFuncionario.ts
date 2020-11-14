@@ -1,4 +1,5 @@
 import {Funcionario} from '../common/funcionario';
+import { Veiculo } from '../common/veiculo';
 
 export class CadastroFuncionario {
     funcionarios: Funcionario[] = []
@@ -24,6 +25,14 @@ export class CadastroFuncionario {
           return true;
       }
       return false;
+    }
+
+    atribuirVeiculo (cpf: String, veic: Veiculo): Funcionario {
+      var result: Funcionario = this.funcionarios.find(f => f.cpf == cpf);
+      if (result) {
+          result.veiculos.push(veic);
+          return result;
+      }
     }
 
     getFuncionarios(): Funcionario[] {

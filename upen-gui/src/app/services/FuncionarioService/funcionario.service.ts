@@ -2,8 +2,10 @@ import { Injectable }    from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment'
 
 import { Funcionario } from '../../../../../common/funcionario';
+import { Veiculo } from '../../../../../common/veiculo';
 
 @Injectable()
 export class FuncionarioService {
@@ -34,6 +36,19 @@ export class FuncionarioService {
                      retry(2)
                    );
     
+        }
+    
+    atribuirVeiculo(func: Funcionario, veic: Veiculo): Observable<Funcionario> {
+        return this.http.put<any>(this.servURL + "/funcionarios/" + func.cpf, JSON.stringify(veic), {headers: this.headers})
+                .pipe (
+                  retry(2)
+                )
+  } 
+    listarVeiculos(): Observable<Veiculo[]> {
+        return this.http.get<Veiculo[]>(environment.routeURLVeiculos)
+                  .pipe(
+                     retry(2)
+                   );
         }
 
 }

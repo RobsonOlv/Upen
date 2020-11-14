@@ -51,6 +51,10 @@ body {
     display: inline-block;
 }
 
+.tableFuncionarios td {
+    height: 30px;
+}
+
 .addfunc {    
     height: 40px;
     width: 40px;
@@ -79,13 +83,16 @@ body {
 .tableFuncionarios td{
     display: inline-block;
     width: 172px;
+    height: auto;
     margin: 10px 0px;
     padding: 0px 10px 0px 10px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .blockList {
-    width: 900px;
+    width: 920px;
+    height: auto;
     background: salmon;
     margin: 2px 0;
     border-style: groove;
@@ -113,7 +120,8 @@ body {
     padding: 0;
     margin: 0;
     height: 15px;
-    width: 15px;
+    width: 24px;
+    margin: 1px;
 }
 
 #button {
@@ -123,8 +131,16 @@ body {
 
 #img {
     width: 15px;
-    height: 15px;
+    height: 24px;
 }
 
 /* */
 
+.select {
+    width: 120px;
+    height: 60px;
+}
+
+.align {
+    text-align: center;
+} 
