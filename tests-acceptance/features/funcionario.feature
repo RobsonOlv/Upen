@@ -12,4 +12,10 @@ Scenario: Removing an existing employee
 Given I am at the employees page
 Given I can see an employee with CPF "12345678999" in the employees list
 When I try to remove the employee with CPF "12345678999"
-Then I cannot see the employee with CPF "12345678999" in the employees list
+Then I cannot see "Marcos" with CPF "12345678999", function "Limpador" and phone number "81975853777" in the employees list
+
+Scenario: Assigning a vehicle to an employee
+Given I am at the employees page
+Given I can see an employee with CPF "12345699999" in the employees list
+When I try to assign a vehicle with plate "MGN-3030" to the employee with CPF "12345699999"
+Then I can see the the plate "MGN-3030" in the employee with CPF "12345699999" vehicles list

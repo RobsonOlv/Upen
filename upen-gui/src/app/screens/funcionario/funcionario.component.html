@@ -28,8 +28,8 @@
                             <td>
                                 <mat-form-field class="select" appearance="fill">
                                     <mat-label>Veículos</mat-label>
-                                    <mat-select>
-                                      <mat-option *ngFor="let veiculo of f.veiculos">{{veiculo.placa}}</mat-option>
+                                    <mat-select name="vehiclelist">
+                                      <mat-option id="placalist" *ngFor="let veiculo of f.veiculos">{{veiculo.placa}}</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                             </td>

@@ -1,10 +1,11 @@
 <h1 align="center" mat-dialog-title>Atribuir veículo a {{func.nome.substring(0, func.nome.indexOf(' '))}}</h1>
 <mat-dialog-content >
         <table>
-            <tr *ngFor="let v of listaVeic">
-                <td>PLACA: {{v.placa}}</td>
+            <tr *ngFor="let v of listaVeic" name="listaVeic">
+                <td>PLACA: </td>
+                <td name="placalist">{{v.placa}}</td>
                 <td>
-                    <button [disabled]="jaatribuiu(v)" mat-button (click)="atribuir(v)">Atribuir</button>
+                    <button name="atribuirbutton" [disabled]="jaatribuiu(v)" mat-button (click)="atribuir(v)">Atribuir</button>
                 </td>
                 <td>
                     <button [disabled]="!jaatribuiu(v)" mat-button>Remover</button>
@@ -13,5 +14,5 @@
         </table>
 </mat-dialog-content>
 <mat-dialog-actions align="center" >
-    <button mat-button type="button" mat-dialog-close>Finalizar</button>
+    <button name="finalizarbutton" mat-button type="button" mat-dialog-close>Finalizar</button>
 </mat-dialog-actions> 

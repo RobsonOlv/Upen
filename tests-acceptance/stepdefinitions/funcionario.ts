@@ -7,7 +7,7 @@ let sameName = ((elem, name) => elem.element(by.name('nomelist')).getText().then
 let sameCPF = ((elem, cpf) => elem.element(by.name('cpflist')).getText().then(text => text === cpf));
 let sameFunction = ((elem, ffunction) => elem.element(by.name('funcaolist')).getText().then(text => text === ffunction));
 let samePhone = ((elem, phone) => elem.element(by.name('telefonelist')).getText().then(text => text === phone));
-
+let samePlate = ((elem, plate) => elem.element(by.name('placalist')).getText().then(text => text === plate));
 
 
 let pAND = ((p,q,r,s) => p.then(a => q.then(b => r.then(c => s.then(d => (a && b && c && d))))))
@@ -22,7 +22,7 @@ defineSupportCode(function ({ Given, When, Then}) {
 
     Given(/^I cannot see an employee with CPF "(\d*)" in the employees list$/, async(cpf) => {
         var allcpfs: ElementArrayFinder = element.all(by.name('cpflist'));
-        var samecpfs = allcpfs.filter( elem => elem.getText().then(text => text ===cpf));
+        var samecpfs = allcpfs.filter( elem => sameCPF(elem,cpf));
         await samecpfs.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
 
     });
@@ -49,27 +49,48 @@ defineSupportCode(function ({ Given, When, Then}) {
         await $("input[name='nomebox']").sendKeys(<string> "Junior");
         await $("input[name='cpfbox']").sendKeys(<string> cpf);
         await $("input[name='funcaobox']").sendKeys(<string> "Mecanico");
-        await $("input[name='telefonebox']").sendKeys(<number> 81988751222);
+        await $("input[name='telefonebox']").sendKeys(<string> "81988751222");
         await element(by.name('cadastrarbutton')).click();
         var allemployees: ElementArrayFinder = element.all(by.name('funclist'));
-        await allemployees.filter(elem => sameCPF(elem,cpf)).then
+        await allemployees.filter(elem => pAND(sameName(elem,"Junior"),sameCPF(elem,cpf),sameFunction (elem,"Mecanico"),samePhone(elem,"81988751222"))).then
                 (elems => expect (Promise.resolve(elems.length)).to.eventually.equal(1));
     });
 
     When(/^I try to remove the employee with CPF "(\d*)"$/, async(cpf) => {
         var allcpfs: ElementArrayFinder = element.all(by.name('funclist'));
-        var samecpfs = allcpfs.filter( elem => sameCPF(elem,cpf));
+        var samecpf = allcpfs.filter( elem => sameCPF(elem,cpf));
         // timeout necessário para o dialog fechar corretamente e poder clicar no botão de remoção.
         await browser.sleep(1000)
-        await samecpfs.all(by.name('removerfuncbutton')).click();
+        await samecpf.all(by.name('removerfuncbutton')).click();
         
     });
 
-    Then(/^I cannot see the employee with CPF "(\d*)" in the employees list$/, async(cpf) => {
-        var allcpfs: ElementArrayFinder = element.all(by.name('cpflist'));
-        var samecpfs = allcpfs.filter( elem => elem.getText().then(text => text ===cpf));
-        await samecpfs.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+    Then(/^I cannot see "([^\"]*)" with CPF "(\d*)", function "([^\"]*)" and phone number "(\d*)" in the employees list$/, async(name,cpf,efunction,pnumber) => {
+        var allemployees: ElementArrayFinder = element.all(by.name('funclist'));
+        await allemployees.filter(elem => pAND(sameName(elem,name),sameCPF(elem,cpf),sameFunction (elem,efunction),samePhone(elem,pnumber))).then
+                (elems => expect (Promise.resolve(elems.length)).to.eventually.equal(0));
 
+    });
+
+    When(/^I try to assign a vehicle with plate "([^\"]*)" to the employee with CPF "(\d*)"$/, async(plate,cpf) => {
+        var allcpfs: ElementArrayFinder = element.all(by.name('funclist'));
+        var samecpf = allcpfs.filter( elem => sameCPF(elem,cpf));
+        await samecpf.all(by.name('openatribbutton')).click();
+        var allplates: ElementArrayFinder = element.all(by.name('listaVeic'));
+        var sameplate = allplates.filter(elem => samePlate(elem,plate));
+        await sameplate.all(by.name('atribuirbutton')).click();
+        await element.all(by.name('finalizarbutton')).click();
+    });
+
+    Then(/^I can see the the plate "([^\"]*)" in the employee with CPF "(\d*)" vehicles list$/, async(plate,cpf) => {
+        await browser.refresh()
+        await browser.sleep(1000)
+        var allcpfs: ElementArrayFinder = element.all(by.name('funclist'));
+        var samecpf = allcpfs.filter( elem => sameCPF(elem,cpf));
+        await samecpf.all(by.name('vehiclelist')).click();
+        var allplates = element(by.cssContainingText('mat-option .mat-option-text', <string> plate));
+        await expect (allplates.getText()).to.eventually.equal(<string> plate)
+        
     });
 
 })
