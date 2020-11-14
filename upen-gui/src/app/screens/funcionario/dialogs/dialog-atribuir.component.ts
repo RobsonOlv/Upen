@@ -40,4 +40,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
         }
 
+        desatribuir(veic: Veiculo) {
+          this.funcService.desatribuirVeiculo(this.func,veic).toPromise()
+        }
+
 } 

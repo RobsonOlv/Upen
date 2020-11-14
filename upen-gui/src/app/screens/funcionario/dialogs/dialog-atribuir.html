@@ -8,7 +8,7 @@
                     <button name="atribuirbutton" [disabled]="jaatribuiu(v)" mat-button (click)="atribuir(v)">Atribuir</button>
                 </td>
                 <td>
-                    <button [disabled]="!jaatribuiu(v)" mat-button>Remover</button>
+                    <button [disabled]="!jaatribuiu(v)" mat-button (click)="desatribuir(v)">Remover</button>
                 </td>
             </tr>
         </table>

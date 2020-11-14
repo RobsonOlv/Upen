@@ -44,6 +44,14 @@ export class FuncionarioService {
                   retry(2)
                 )
   } 
+
+    desatribuirVeiculo(func: Funcionario, veic: Veiculo): Observable<Funcionario> {
+        return this.http.put<any>(this.servURL + "/funcionarios/" + func.cpf+"/"+veic.placa, JSON.stringify(veic), {headers: this.headers})
+                  .pipe (
+                    retry(2)
+                  )
+    }
+
     listarVeiculos(): Observable<Veiculo[]> {
         return this.http.get<Veiculo[]>(environment.routeURLVeiculos)
                   .pipe(

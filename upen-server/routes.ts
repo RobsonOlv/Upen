@@ -135,6 +135,21 @@ routes.put('/funcionarios/:id', (req: Request, res: Response) => {
 
 });
 
+routes.put('/funcionarios/:id/:placa', (req: Request, res: Response) => {
+  var id = req.params.id;
+  var placa = req.params.placa;
+  var veiculo = <Veiculo> req.body;
+
+  var atrib = cdFuncionario.desatribuirVeiculo(id, veiculo)
+
+  if (atrib) {
+    res.send({"success": "o veiculo foi devidamente desatribuido."});
+  } else {
+    res.status(404).send({"failure": "o veiculo nao pode ser desatribuido"});
+  }
+
+});
+
 routes.delete('/funcionarios/:id', (req: Request, res: Response) => {
   var id = req.params.id;
   var aux = cdFuncionario.deletarFuncionario(id);

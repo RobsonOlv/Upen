@@ -35,6 +35,16 @@ export class CadastroFuncionario {
       }
     }
 
+    desatribuirVeiculo (cpf: String, veic: Veiculo): Funcionario {
+      var result: Funcionario = this.funcionarios.find(f => f.cpf == cpf);
+      if (result) {
+        var ind = result.veiculos.findIndex(veicc => veicc.placa == veic.placa)
+        result.veiculos.splice(ind,1)
+        return result;
+      }
+
+    }
+
     getFuncionarios(): Funcionario[] {
           return this.funcionarios;
     }
