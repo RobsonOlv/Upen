@@ -16,6 +16,7 @@ import { FuncionarioComponent } from './screens/funcionario/funcionario.componen
 import { ListaVeiculoComponent } from './screens/lista-veiculo/lista-veiculo.component';
 import { PneuElementoComponent } from './screens/pneu-elemento/pneu-elemento.component';
 import { VeiculoElementoComponent } from './screens/veiculo-elemento/veiculo-elemento.component';
+import { LixeiraPneusComponent } from './screens/lista-pneus/lixeira-pneus/lixeira-pneus.component'
 import { DialogPermanentRemoval } from "./screens/lista-pneus/lixeira-pneus/DialogPermanentRemoval";
 
 // servicos
@@ -40,6 +41,8 @@ import { VeiculoElementoService } from './services/VeiculoElementoService/veicul
     DashBoardComponent,
     DashBoardDetailComponent,
     ListaPneusComponent,
+    LixeiraPneusComponent,
+    DialogPermanentRemoval
   ],
   imports: [
     BrowserModule,
@@ -54,8 +57,8 @@ import { VeiculoElementoService } from './services/VeiculoElementoService/veicul
     { path: 'pneus', component: ListaPneusComponent },
     { path: 'pneus/:id', component:PneuElementoComponent},
     { path: 'veiculos', component: ListaVeiculoComponent },
-    { path: 'veiculos/:placa', component: VeiculoElementoComponent },])
-    //{ path: 'lixeirapneus', component: LixeiraPneusComponent }
+    { path: 'veiculos/:placa', component: VeiculoElementoComponent },
+    { path: 'lixeirapneus', component: LixeiraPneusComponent }])
   ],
   providers: [
     HistoricoService, FuncionarioService,

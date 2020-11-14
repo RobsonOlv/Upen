@@ -58,10 +58,25 @@ defineSupportCode(function ({ Given, When, Then }) {
 
     //DELETING TYRE WITH REGISTERED ID
     Given(/^I can see a tyre with "id" "([^\"]*)" in the tyres list$/, async (id) => {
-        var allids : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameids = allids.filter(elem =>
+        await browser.sleep(3000);
+        await $("button[name='botaoInserir']").click();
+
+        await $("input[name='idbox']").sendKeys(<string> id);
+        await $("input[name='marcabox']").sendKeys(<string> "Goodyear");
+        await $("input[name='arobox']").sendKeys(<string> "16");
+        await $("input[name='largurabox']").sendKeys(<string>  "20");
+        await $("input[name='custobox']").sendKeys(<string> "0");
+        await $("input[name='capacidadebox']").sendKeys(<string> "200");
+        await $("input[name='kmhbox']").sendKeys(<string> "0");
+        await $("input[name='treadwearbox']").sendKeys(<string> "100");
+        await $("input[name='databox']").sendKeys(<string> "20/01/2019");
+
+        await element(by.name('botaoSubmit')).click();
+
+        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameIds = allIds.filter(elem =>
                                       elem.getText().then(text => text === id));
-        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
 
 

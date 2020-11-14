@@ -143,6 +143,9 @@ body {
     background: #8c8c8c;
 }
 
+.fa-trash:hover{
+    color: #8B5095;
+}
 
 .fa-plus-circle:hover {
     color: #8B5095;
@@ -164,10 +167,23 @@ body {
     margin-left: 12px;
 }
 
-.btn:hover {
-    color: blueviolet;
+.btnLixeira{
+    width: 55px;
+    height: 55px;
+    position: fixed;
+    bottom: 16%;
+    border: #362f36;
+    border-radius: 100%;
+    right: 9.8%;     
+    border-style: solid;
+    border-width: 4px;
+    cursor: pointer;
+    font-size: 25px;
 }
 
+.btnLixeira:hover{
+    background-color:  #8B5095;
+}
 .modal.show{
     display: block;
     display: flex;
@@ -297,35 +313,3 @@ input[type=number] {
     padding-left: 4px; 
 }
 
-.btnLixeira{
-    width: 44px;
-    height: 44px;
-    position: fixed;
-    bottom: 6%;
-    border-radius: 50%;
-    right: 4%;
-    right: 92.4%;
-    background: white;     
-
-    border-style: solid;
-    border-width: 4px;
-    border-color: black;
-
-    border-color: #8B5095;
-    border-color: #4d4d4d;
-
-    color: #4d4d4d;;
-
-
-    cursor: pointer;
-
-    font-size: 25px;
-}
-
-.btnLixeira:hover{
-    background-color:  #8B5095;
-    background: #4d4d4d;
-    color:white;
-    /*width: 44px;
-    height: 44px;*/
-} 

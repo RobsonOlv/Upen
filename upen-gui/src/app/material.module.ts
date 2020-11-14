@@ -1,6 +1,4 @@
-
 import { NgModule } from '@angular/core';
-
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -17,7 +15,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatCardModule,
     MatDialogModule,
     MatInputModule,
     MatSelectModule
@@ -27,7 +24,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule,
     MatCardModule,
     MatDialogModule,
     MatInputModule,

@@ -11,6 +11,6 @@ Then I can see tyre "0001" with "brand" "Goodyear", "rim" "16" and "date" "20/02
 
 Scenario: Deleting tyre with registered id
 Given I am at the "tyrelist" page
-Given I can see a tyre with "id" "0001" in the tyres list
-When I try to delete tyre with "id" "0001"
-Then I can no longer see tyre with "id" "0001" in the tyres list
+Given I can see a tyre with "id" "0002" in the tyres list
+When I try to delete tyre with "id" "0002"
+Then I can no longer see tyre with "id" "0002" in the tyres list

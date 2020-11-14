@@ -6,7 +6,6 @@
         <div class="pageName">
             <h1>Lista de Pneus</h1>
         </div>
-
         <div class="tabelaCampos">
             <table>
                 <div class="campos" >
@@ -47,7 +46,15 @@
                 </span>
             </button>
         </div>
-        <div class="divBotaoAcessarLixeira"><a routerLink="/lixeirapneus" name="LixeiraPneus" routerLinkActive="active-button">  <button class="btnLixeira"><i class="fas fa-trash-alt fa"></i></button></a></div>
+        <div class="divBotaoAcessarLixeira">
+            <a routerLink="/lixeirapneus" name="LixeiraPneus" routerLinkActive="active-button">  
+                <button class="btnLixeira">
+                    <span style="color: #362f36;">
+                        <i class="fa fa-trash"></i>
+                    </span>
+                </button>
+            </a>
+        </div>
 
         <!-- The Modal -->
     <div class="modal" id="myModal" [ngClass]="{'show': popupCadastro}">
