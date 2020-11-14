@@ -10,10 +10,10 @@
     background: transparent;
     margin-top: 4.8px;    
     margin-bottom: 4.8px;
-    margin-left: 12px;
+    margin-left: 50px;
 }
 
-.blocoPosition1{
+.blocoPosition{
     margin-left: 140px;
     width: 880px;
     margin-bottom: 6px;
@@ -48,4 +48,41 @@
 
 .yesNoDiv{
     margin: auto;
+}
+
+.blocoLixeira{
+    width: 930px;
+    background: #8B5095;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2.5px;
+    border-color: black;
+}
+
+.blocoLixeiraPosition{
+    margin-left: 70px;
+    width: 880px;
+    margin-bottom: 6px;
+}
+
+.camposLixeira{
+    color:white;
+    width: 1000px;
+    margin-left: 90px;
+    margin-top: 10px;
+}
+
+.lixeiraInfo{
+    padding-top: 2px;
+    font-size: 16px;
+    color: white;
+}
+
+.divPneuLixeiraInfo{
+    display: inline-block;
+    width: 140px;
+    height: 8px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    text-indent: 22px;
 }

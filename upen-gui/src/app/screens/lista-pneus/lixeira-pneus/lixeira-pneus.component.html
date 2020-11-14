@@ -11,11 +11,12 @@
 
         <div class="tabelaCampos">
             <table>
-                <div class="campos" >
+                <div class="camposLixeira" >
                     <tr>
                         <td class="elementoCampo">ID</td>
                         <td class="elementoCampo">Custo</td>
                         <td class="elementoCampo">Marca</td>
+                        <td class="elementoCampo">Kilometragem</td>
                         <td class="elementoCampo">Aro</td>
                         <td class="elementoCampo">Data</td>
                     </tr>
@@ -24,15 +25,16 @@
         </div>     
             <div class="listaPneus">
                 <table *ngFor="let a of lixeira" >
-                        <div class="blocoPosition">
+                        <div class="blocoLixeiraPosition">
                             <tr name="pneulist">
                                 <a href="http://localhost:4200/pneus/{{a.id}}">
-                                    <div class="bloco">
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="idlist">{{a.id}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="custolist">{{a.custo}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="marcalist">{{a.marca}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="arolist">{{a.aro}}</td></div>
-                                            <div class="divPneuInfo"><td class="pneuInfo" name="datalist">{{a.data}}</td></div> 
+                                    <div class="blocoLixeira">
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="idlist">{{a.id}}</td></div>
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="custolist">{{a.custo}}</td></div>
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="marcalist">{{a.marca}}</td></div>
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="arolist">{{a.kmh}}</td></div>
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="datalist">{{a.aro}}</td></div>
+                                            <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="kmhlist">{{a.data}}</td></div> 
                                     </div> 
                                 </a>
                                 <div class="divButtons">
@@ -61,4 +63,4 @@
                 </a>
             </div>
     </body>
-</html>_
+</html>
