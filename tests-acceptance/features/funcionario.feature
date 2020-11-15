@@ -19,3 +19,9 @@ Given I am at the employees page
 Given I can see an employee with CPF "12345699999" in the employees list
 When I try to assign a vehicle with plate "MGN-3030" to the employee with CPF "12345699999"
 Then I can see the the plate "MGN-3030" in the employee with CPF "12345699999" vehicles list
+
+Scenario: Unassign a vehicle from an employee
+Given I am at the employees page
+Given I can see an employee with CPF "12345666666" assigned with "MGN-3031" in the employees list
+When I try to unassign the vehicle with plate "MGN-3031" from the employee with CPF "12345666666"
+Then I cannot see the vehicle plate "MGN-3031" in the employee with CPF "12345666666" vehicles list

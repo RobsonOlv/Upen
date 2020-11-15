@@ -63,4 +63,13 @@ export class FuncionarioComponent implements OnInit {
 
   }
 
+  listavazia(func: Funcionario):Boolean {
+    if (func.veiculos.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
 }

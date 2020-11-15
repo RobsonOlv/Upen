@@ -30,6 +30,7 @@
                                     <mat-label>Veículos</mat-label>
                                     <mat-select name="vehiclelist">
                                       <mat-option id="placalist" *ngFor="let veiculo of f.veiculos">{{veiculo.placa}}</mat-option>
+                                      <mat-option *ngIf="listavazia(f)">Nenhum</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                             </td>
