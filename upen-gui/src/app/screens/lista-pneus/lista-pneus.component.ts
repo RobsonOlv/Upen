@@ -47,7 +47,7 @@ export class ListaPneusComponent implements OnInit {
           if (ar) {
             this.pneus.push(ar);
             this.pneu = new Pneu();
-            //alert("Pneu cadastrado");
+            alert("Pneu cadastrado");
             this.botaoCadastrarPressionado = false;
             this.fecharPopup();
           } else {
@@ -63,6 +63,7 @@ export class ListaPneusComponent implements OnInit {
       .subscribe(
         ar => {
           if(ar != null){
+            alert("Pneu deletado");
             for (let i = 0; i < this.pneus.length; i++) {
               if (this.pneus[i].id == a) this.pneus.splice(i, 1); 
             }
