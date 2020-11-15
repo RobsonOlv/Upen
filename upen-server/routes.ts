@@ -74,7 +74,8 @@ routes.delete('/lixeirapneus/:id', function(req: Request, res: Response){
   var index = cdPneu.removerPermanente(id);
   if(index != null){
       //res.send({"success": "o pneu foi removido permanentemente com sucesso", "index": index});
-      var historico = cdHistorico.cadastrar(id,"Removeu Permanentemente","Pneu"); 
+      //var historico = cdHistorico.cadastrar(id,"Removeu Permanentemente","Pneu"); 
+      var historico = true;
       if (historico) {res.send({"success": "o pneu foi removido com sucesso", "index": index})}
       else { res.status(404).send({"failure": "Remoção de pneu falhou"});}
   }else{
@@ -86,7 +87,8 @@ routes.post('/lixeirapneus', (req: Request, res: Response) => {
   var pneu : Pneu = <Pneu> req.body;
   var index = cdPneu.restaurarPneu(pneu);
   if(pneu != null) {
-      var historico = cdHistorico.cadastrar(pneu.id,"Cadastrou","Pneu"); 
+      //var historico = cdHistorico.cadastrar(pneu.id,"Cadastrou","Pneu"); 
+      var historico = true;
       if (historico) {res.send({"success": "Pneu cadastrado com sucesso", "index": index});}
       else { res.send({"failure": "Cadastro de pneu falhou"});}
   }

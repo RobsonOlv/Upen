@@ -26,7 +26,7 @@
             <div class="listaPneus">
                 <table *ngFor="let a of lixeira" >
                         <div class="blocoLixeiraPosition">
-                            <tr name="pneulist">
+                            <tr name="lixeiralist">
                                 <a href="http://localhost:4200/pneus/{{a.id}}">
                                     <div class="blocoLixeira">
                                             <div class="divPneuLixeiraInfo"><td class="lixeiraInfo" name="idlist">{{a.id}}</td></div>
@@ -57,7 +57,7 @@
             </div>
             <div class="divBotaoAcessarLixeira">
                 <a routerLink="/pneus" name="LixeiraPneus" routerLinkActive="active-button">  
-                    <button class="btnLixeira">
+                    <button class="btnLixeira" name="quitButton">
                         <i class="fas fa-arrow-left"></i>
                     </button>
                 </a>

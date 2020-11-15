@@ -66,6 +66,7 @@ export class LixeiraPneusComponent implements OnInit {
       this.listaPneusService.restaurarPneu(pneu).subscribe(
         ar => {
           if(ar != null){
+            alert("Pneu restaurado");
             this.removerPorIndex(ar, pneu.id);
           } else {
             this.listarLixeira();

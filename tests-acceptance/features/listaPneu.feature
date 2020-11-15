@@ -14,3 +14,11 @@ Given I am at the "tyrelist" page
 Given I can see a tyre with "id" "0002" with "brand" "Pirelli", "rim" "18", "width" "200", "cost" "0", "capacity" "100", "mileage" "0", "treadwear" "220" and "date" "15/10/2019" in the tyres list
 When I try to delete tyre with "id" "0002"
 Then I can no longer see tyre with "id" "0002" in the tyres list
+
+Scenario: Restoring tyre from trash bin
+Given I am at the "tyrelist" page
+Given I can see tyre with "id" "0003" with "brand" "MICHELIN", "rim" "15", "width" "220", "cost" "0", "capacity" "110", "mileage" "0", "treadwear" "250" and "date" "15/10/2020" in the tyres list
+When I delete tyre with "id" "0003"
+And I click on the "trashbin" to go to the list of deleted tyres
+And I try to restore tyre with "id" "0003" back to the tyres list
+Then I can see tyre with "id" "0003" in the tyres list

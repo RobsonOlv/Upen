@@ -67,6 +67,7 @@ defineSupportCode(function ({ Given, When, Then }) {
                    (elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
 
+
     //DELETING TYRE WITH REGISTERED ID
     Given(/^I can see a tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
         await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
@@ -89,6 +90,44 @@ defineSupportCode(function ({ Given, When, Then }) {
         
     });
 
+    
     //RESTORING A TYRE FROM THE TRASH BIN
+    Given(/^I can see tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
+        await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
+        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameIds = allIds.filter(elem =>
+                                      elem.getText().then(text => text === id));
+        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
 
+    When(/^I delete tyre with "id" "([^\"]*)"$/, async(id) =>{
+        await deletarPneu(id);
+        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));
+        var sameids = alltyres.filter(elem =>
+            elem.getText().then(text => text === id));
+        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+    });
+
+    When(/^I click on the "trashbin" to go to the list of deleted tyres$/, async() => {
+        await browser.sleep(3000);
+        await $("button[name='botaoLixeira']").click();
+        await expect(browser.getCurrentUrl()).to.eventually.equal('http://localhost:4200/lixeirapneus');
+    });
+
+    When(/^I try to restore tyre with "id" "([^\"]*)" back to the tyres list$/, async(id) => {
+        await browser.sleep(3000);
+        var alltyres : ElementArrayFinder = element.all(by.name('lixeiralist'));  
+        var sameids = alltyres.filter(elem => check(sameId(elem, id)));
+        await sameids.all(by.name('restoreButton')).click();
+        await browser.switchTo().alert().accept();
+        await $("button[name='quitButton']").click();
+        await expect(browser.getCurrentUrl()).to.eventually.equal('http://localhost:4200/pneus');
+    });
+
+    Then(/^I can see tyre with "id" "([^\"]*)" in the tyres list$/, async(id) => {
+        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameids = allIds.filter(elem =>
+            elem.getText().then(text => text === id));
+        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
 })
