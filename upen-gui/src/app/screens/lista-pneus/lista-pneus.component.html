@@ -9,6 +9,14 @@
         <div class="tabelaCampos">
             <table>
                 <div class="campos">
+                    <div class="container">
+                        <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                            <input type="search" [(ngModel)]="filterSearch" (change)="filtroSearch()" class="form-control form-control-sm ml-3 w-75" name="searchBar" type="text" placeholder="Procurar pneu" 
+                              aria-label="Search"> 
+                            <button type="button" class="btn btn-secondary btn-rounded">Pesquisar</button>
+                            </form>
+                    </div>
                     <tr>
                         <td class="elementoCampo">ID</td>
                         <td class="elementoCampo">Atribuído</td>
@@ -20,7 +28,7 @@
             </table>
         </div>
         <div class="listaPneus">
-            <table *ngFor="let a of pneus" >
+            <table *ngFor="let a of pneusSearch">
                 <div class="blocoPosition">
                     <tr name="tyrelist">
                         <a href="http://localhost:4200/pneus/{{a.id}}">

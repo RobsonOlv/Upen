@@ -12,9 +12,10 @@ import { ListaPneusService } from 'src/app/services/ListaPneuService/lista-pneus
   styleUrls: ['./lista-pneus.component.css']
 })
 export class ListaPneusComponent implements OnInit {
-
+  filterSearch: string;
   pneu: Pneu = new Pneu();
   pneus: Pneu[] = [];
+  pneusSearch: Pneu[] = [];
   atribuicao: [string, string, string, boolean] = ["", "", "", false];
   id: string;
   marca: string;
@@ -46,6 +47,8 @@ export class ListaPneusComponent implements OnInit {
         ar => {
           if (ar) {
             this.pneus.push(ar);
+            this.filterSearch = "";
+            this.pneusSearch = this.pneus;
             this.pneu = new Pneu();
             alert("Pneu cadastrado");
             this.botaoCadastrarPressionado = false;
@@ -65,7 +68,8 @@ export class ListaPneusComponent implements OnInit {
           if(ar != null){
             alert("Pneu deletado");
             for (let i = 0; i < this.pneus.length; i++) {
-              if (this.pneus[i].id == a) this.pneus.splice(i, 1); 
+              if (this.pneus[i].id == a) this.pneus.splice(i, 1);
+              this.pneusSearch.splice(i, 1); 
             }
           } else {
             alert("Pneu não pode ser deletado");
@@ -73,6 +77,14 @@ export class ListaPneusComponent implements OnInit {
         },
         msg => { alert(msg.message); }
       ); 
+  }
+
+  filtroSearch(): void {
+    if (this.filterSearch == "" || this.filterSearch == undefined) {
+      this.pneusSearch = this.pneus;
+      return;
+    }
+    this.pneusSearch = this.pneus.filter(el => el.id === this.filterSearch);
   }
 
   checkAllFilled(): boolean{
@@ -114,7 +126,8 @@ export class ListaPneusComponent implements OnInit {
     });
     this.ListaPneusService.getPneus()
       .subscribe(
-        as => { this.pneus = as; },
+        as => { this.pneus = as; 
+        this.pneusSearch = this.pneus},
         msg => { alert(msg.message); }
       )
   }
