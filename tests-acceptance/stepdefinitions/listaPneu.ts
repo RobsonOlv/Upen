@@ -39,6 +39,20 @@ async function deletarPneu(id){
     await browser.switchTo().alert().accept();
 }
 
+async function assertElementsWithSameIDAllTyres(n, id) {
+    var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));
+    var sameids = alltyres.filter(elem =>
+            elem.getText().then(text => text === id));
+    await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(n));
+}
+
+async function assertElementsWithSameIDAllIds(n, id){
+    var allIds : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameIds = allIds.filter(elem =>
+                                      elem.getText().then(text => text === id));
+        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(n));
+}
+
 
 defineSupportCode(function ({ Given, When, Then }) {
 
@@ -50,10 +64,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     });   
 
     Given(/^I cannot see a tyre with "id" "([^\"]*)" in the tyres list$/, async (id) => {
-        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameids = allIds.filter(elem =>
-                                      elem.getText().then(text => text === id));
-        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));   
+        await assertElementsWithSameIDAllTyres(0, id);  
     });
 
     When(/^I try to register tyre "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)"$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
@@ -71,10 +82,7 @@ defineSupportCode(function ({ Given, When, Then }) {
     //DELETING TYRE WITH REGISTERED ID
     Given(/^I can see a tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
         await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
-        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameIds = allIds.filter(elem =>
-                                      elem.getText().then(text => text === id));
-        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await assertElementsWithSameIDAllIds(1, id);
     });
 
 
@@ -83,29 +91,19 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     Then(/^I can no longer see tyre with "id" "([^\"]*)" in the tyres list$/, async (id) => {
-        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));
-        var sameids = alltyres.filter(elem =>
-            elem.getText().then(text => text === id));
-        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
-        
+        await assertElementsWithSameIDAllTyres(0, id);
     });
 
     
     //RESTORING A TYRE FROM THE TRASH BIN
     Given(/^I can see tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
         await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
-        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameIds = allIds.filter(elem =>
-                                      elem.getText().then(text => text === id));
-        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await assertElementsWithSameIDAllIds(1, id);
     });
 
     When(/^I delete tyre with "id" "([^\"]*)"$/, async(id) =>{
         await deletarPneu(id);
-        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));
-        var sameids = alltyres.filter(elem =>
-            elem.getText().then(text => text === id));
-        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+        await assertElementsWithSameIDAllTyres(0, id);
     });
 
     When(/^I click on the "trashbin" to go to the list of deleted tyres$/, async() => {
@@ -123,20 +121,14 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     Then(/^I can see tyre with "id" "([^\"]*)" in the tyres list$/, async(id) => {
-        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameids = allIds.filter(elem =>
-            elem.getText().then(text => text === id));
-        await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await assertElementsWithSameIDAllIds(1, id);
     });
 
 
     //VISUALIZING TYRE
     Given(/^I see tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
         await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
-        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
-        var sameIds = allIds.filter(elem =>
-                                      elem.getText().then(text => text === id));
-        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+        await assertElementsWithSameIDAllIds(1, id);
     });
 
     When(/^I type "([^\"]*)" on the "search bar" and press the search button$/, async(id) => {
