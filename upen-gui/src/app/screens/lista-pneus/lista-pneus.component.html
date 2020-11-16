@@ -145,10 +145,10 @@
                         <div class="linhaCadastro">
                             <tr>
                                 <td>
-                                    <input class="inputTextCadastro" type="number" placeholder="Kilometragem" name="kmhbox" [(ngModel)]="pneu.kmh">
+                                    <input class="inputTextCadastro" type="number" placeholder="Kilometragem" name="kmhbox" [(ngModel)]="pneu.kms">
                                 </td>
-                                <td *ngIf = "checkNumberNotFilled(pneu.kmh) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
-                                        Insira o valor para km/h
+                                <td *ngIf = "checkNumberNotFilled(pneu.kms) && botaoCadastrarPressionado"  class="campoNaoPreenchido" >
+                                        Insira o valor para kilometragem
                                 </td>
                             </tr>
                         </div>

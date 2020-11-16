@@ -91,7 +91,7 @@ export class ListaPneusComponent implements OnInit {
     return (!this.checkStringNotFilled(this.pneu.id) && !this.checkStringNotFilled(this.pneu.marca) &&
       !this.checkNumberNotFilled(this.pneu.aro) && !this.checkNumberNotFilled(this.pneu.largura)
       && !this.checkNumberNotFilled(this.pneu.custo)) && !this.checkNumberNotFilled(this.pneu.capacidade) && 
-      !this.checkNumberNotFilled(this.pneu.kmh) && !this.checkNumberNotFilled(this.pneu.treadwear) && !this.checkStringNotFilled(this.pneu.data);
+      !this.checkNumberNotFilled(this.pneu.kms) && !this.checkNumberNotFilled(this.pneu.treadwear) && !this.checkStringNotFilled(this.pneu.data);
   }
 
   checkStringNotFilled( s: string): boolean{
