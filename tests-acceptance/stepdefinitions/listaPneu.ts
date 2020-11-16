@@ -17,7 +17,7 @@ let check = ((p) => p.then( a => a))
 let pAND = ((p,q,r,s,) => p.then(a => q.then(b => r.then(c => s.then(d =>(a && b && c && d ) )))))
 
 async function criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data){
-    await browser.sleep(3000);
+    await browser.sleep(1000);
     await $("button[name='botaoInserir']").click();
     await $("input[name='idbox']").sendKeys(<string> id);
     await $("input[name='marcabox']").sendKeys(<string> marca);
@@ -109,13 +109,11 @@ defineSupportCode(function ({ Given, When, Then }) {
     });
 
     When(/^I click on the "trashbin" to go to the list of deleted tyres$/, async() => {
-        await browser.sleep(3000);
         await $("button[name='botaoLixeira']").click();
         await expect(browser.getCurrentUrl()).to.eventually.equal('http://localhost:4200/lixeirapneus');
     });
 
     When(/^I try to restore tyre with "id" "([^\"]*)" back to the tyres list$/, async(id) => {
-        await browser.sleep(3000);
         var alltyres : ElementArrayFinder = element.all(by.name('lixeiralist'));  
         var sameids = alltyres.filter(elem => check(sameId(elem, id)));
         await sameids.all(by.name('restoreButton')).click();
@@ -130,4 +128,26 @@ defineSupportCode(function ({ Given, When, Then }) {
             elem.getText().then(text => text === id));
         await sameids.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
     });
+
+
+    //VISUALIZING TYRE
+    Given(/^I see tyre with "id" "([^\"]*)" with "brand" "([^\"]*)", "rim" "(\d*)", "width" "(\d*)", "cost" "(\d*)", "capacity" "(\d*)", "mileage" "(\d*)", "treadwear" "(\d*)" and "date" "([^\"]*)" in the tyres list$/, async (id, marca, aro, largura, custo, capacidade, kmh, treadwear, data) => {
+        await criarPneu(id, marca, aro, largura, custo, capacidade, kmh, treadwear, data);
+        var allIds : ElementArrayFinder = element.all(by.name('idlist'));
+        var sameIds = allIds.filter(elem =>
+                                      elem.getText().then(text => text === id));
+        await sameIds.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(1));
+    });
+
+    When(/^I type "([^\"]*)" on the "search bar" and press the search button$/, async(id) => {
+        await $("input[name='searchBar']").sendKeys(<string>  id);
+        await element(by.name('buttonSearch')).click();
+        var alltyres : ElementArrayFinder = element.all(by.name('tyrelist'));  
+        var sameids = alltyres.filter(elem => check(sameId(elem, id)));
+        await sameids.all(by.name('blocolist')).click();
+    })
+
+    Then(/^I am at the page of the tyre with "id" "([^\"]*)"$/, async(id) => {
+        await expect(browser.getCurrentUrl()).to.eventually.equal(`http://localhost:4200/pneus/${id}`);
+    })
 })

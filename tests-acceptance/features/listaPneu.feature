@@ -22,3 +22,9 @@ When I delete tyre with "id" "0003"
 And I click on the "trashbin" to go to the list of deleted tyres
 And I try to restore tyre with "id" "0003" back to the tyres list
 Then I can see tyre with "id" "0003" in the tyres list
+
+Scenario: Visualizing tyre
+Given I am at the "tyrelist" page
+Given I see tyre with "id" "0004" with "brand" "Continental", "rim" "17", "width" "210", "cost" "0", "capacity" "105", "mileage" "0", "treadwear" "240" and "date" "01/09/2020" in the tyres list
+When I type "0004" on the "search bar" and press the search button
+Then I am at the page of the tyre with "id" "0004" 
