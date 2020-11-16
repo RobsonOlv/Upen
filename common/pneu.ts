@@ -27,7 +27,7 @@ export class Pneu {
         this.kms;
         this.treadwear;
         this.eventos = [];
-        this.atribuicao = ["", "", "", false]
+        this.atribuicao = ["", "", "", false];
     }
 
     clone(): Pneu {
@@ -46,7 +46,7 @@ export class Pneu {
         this.custo = from.custo;
         this.kms = from.kms;
         this.treadwear = from.treadwear;
-        this.atribuicao = from.atribuicao;
+        this.copyAtribuicaoFrom(from.atribuicao);
         this.copyEventosFrom(from.eventos);
     }
 
@@ -54,6 +54,13 @@ export class Pneu {
         this.eventos = [];
         for(let key in from){
             this.eventos[key] = from[key];
+        }
+    }
+
+    copyAtribuicaoFrom(from: [string, string, string, boolean]): void {
+        this.atribuicao = ["", "", "", false];
+        for(let key in from){
+            this.atribuicao[key] = from[key];
         }
     }
 }

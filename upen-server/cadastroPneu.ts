@@ -8,7 +8,7 @@ export class CadastroDePneu {
 
     cadastrar(pneu: Pneu): String{
           var result = null;
-          if(this.idNaoCadastrado(pneu.id)){
+          if(this.idNaoCadastrado(pneu.id) && this.checkTypes(pneu)){
             result = new Pneu();
             result.copyFrom(pneu);
             this.pneus.push(result);
@@ -17,13 +17,22 @@ export class CadastroDePneu {
         return "failed";
     }
 
+    checkTypes(pneu: Pneu): boolean {
+        if(pneu.id != undefined && pneu.kms != undefined && pneu.custo != undefined 
+            && pneu.marca != undefined && pneu.largura != undefined && pneu.aro != undefined
+            && pneu.capacidade != undefined && pneu.treadwear != undefined && pneu.data != undefined) {
+            return true;
+        }
+        return false;
+    }
+
     idNaoCadastrado(id: string): boolean{
         return !this.pneus.find(a => a.id == id);
     }
 
     pneuNaoCadastrado(id: string, listaPneus: Pneu []): boolean {
          return !listaPneus.find(elem => elem.id == id);
-   }	     
+    }	     
 
     atualizar(pneu: Pneu): Pneu{
         var result: Pneu = this.pneus.find(a => a.id == pneu.id);
@@ -59,13 +68,13 @@ export class CadastroDePneu {
 
     listarLixeira(): Pneu[] {
         return this.lixeiraPneus;
-   }
+    }
 
     moverParaLixeira(pneu: Pneu): void{
         if(this.pneuNaoCadastrado(pneu.id, this.lixeiraPneus)){
              this.lixeiraPneus.push(pneu);
         }
-   }
+    }
 
     removerPermanente(id :string): string{
     for(let i = 0; i < this.lixeiraPneus.length; i++){
@@ -75,7 +84,7 @@ export class CadastroDePneu {
         }
     }
     return "failed";
-   }
+    }
 
    restaurarPneu(pneu: Pneu): string{
         if(!this.pneuNaoCadastrado(pneu.id, this.lixeiraPneus)){
