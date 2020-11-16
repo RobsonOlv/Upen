@@ -116,7 +116,7 @@ routes.post('/funcionarios', (req: Request, res: Response) => {
     if (funcionario) {
       res.send({"success": "o funcionario foi devidamente cadastrado."});
     } else {
-        res.status(404).send({"failure": "o funcionario nao pode ser cadastrado"});
+        res.send({"failure": "o funcionario nao pode ser cadastrado"});
     }
 
 });
@@ -130,7 +130,7 @@ routes.put('/funcionarios/:id', (req: Request, res: Response) => {
   if (atrib) {
     res.send({"success": "o veiculo foi devidamente atribuido."});
   } else {
-    res.status(404).send({"failure": "o veiculo nao pode ser atribuido"});
+    res.send({"failure": "o veiculo nao pode ser atribuido"});
   }
 
 });
@@ -145,7 +145,7 @@ routes.put('/funcionarios/:id/:placa', (req: Request, res: Response) => {
   if (atrib) {
     res.send({"success": "o veiculo foi devidamente desatribuido."});
   } else {
-    res.status(404).send({"failure": "o veiculo nao pode ser desatribuido"});
+    res.send({"failure": "o veiculo nao pode ser desatribuido"});
   }
 
 });
@@ -156,7 +156,7 @@ routes.delete('/funcionarios/:id', (req: Request, res: Response) => {
   if (aux) {
     res.send({"success" : "o funcionario foi devidamente removido."})
   } else{
-    res.status(404).send({"failure": "o funcionario nao pode ser cadastrado"});
+    res.send({"failure": "o funcionario nao pode ser removido"});
   }
 
 });
