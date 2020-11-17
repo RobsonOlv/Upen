@@ -19,11 +19,20 @@ defineSupportCode(function ({ Given, When, Then}) {
 
     Given(/^I see that the tire is not assigned to a vehicle$/, async () => {
         await expect(element(by.id("veiculo-atribuicao-valor")).getText()).to.eventually.equal("X");
-    });
+    })
 
     Given(/^I see the option "([^\"]*)"$/, async (text) => {
         await expect($("input[class='botao-lateral-excluir']").getAttribute("value")).to.eventually.equal("Excluir");
-    });
+    })
+
+    Given(/^I see that the tire "([^\"]*)" have "([^\"]*)" in Kms field and "([^\"]*)" in Custo field and a empty list of events$/, async (id, kms, custo) => {
+        await expect(element(by.id("pneu-custo")).getAttribute("placeholder")).to.eventually.equal(custo);
+        await expect(element(by.id("pneu-kms")).getAttribute("placeholder")).to.eventually.equal(kms);
+    })
+
+    Given(/^And I see the option "([^\"]*)"$/, async (cb) => {
+        await expect($("input[class='botao-lateral-excluir']").getAttribute("value")).to.eventually.equal(cb);
+    })
 
     When(/^I try to assign the tire to the vehicle with plate "([^\"]*)" in position "([^\"]*)" and side "([^\"]*)"$/, async (plate, position, side) => {
         await $("input[id='veiculo-placa']").sendKeys(<string>plate);
@@ -43,6 +52,7 @@ defineSupportCode(function ({ Given, When, Then}) {
     When(/^I try to delete the tire "([^\"]*)"$/, async (id) => {
         await element(by.className("botao-lateral-excluir")).click();
     });
+   
 
     Then(/^I see an alert "([^\"]*)"$/, async (text) => {
         browser.sleep(4000);
@@ -61,4 +71,20 @@ defineSupportCode(function ({ Given, When, Then}) {
         });
         await expect(browser.getCurrentUrl()).to.eventually.equal(base_url);
     });
+
+    When(/^I try to calculate the cost-benefit$/, async () => {
+        await element(by.className("botao-lateral-custo-beneficio")).click();
+    });
+
+    Then(/^I see a pop-up with four fields: "([^\"]*)", "([^\"]*)", "([^\"]*)" and "([^\"]*)"$/, async (kms, custo, kmc, coef) => {
+        await expect(element(by.className("modal-body-dados-custo")).getText()).to.eventually.equal(custo);
+        await expect(element(by.className("modal-body-dados-kms")).getText()).to.eventually.equal(kms);
+        await expect(element(by.id("cbResult1")).getText()).to.eventually.equal(kmc);
+        await expect(element(by.id("cbResult2")).getText()).to.eventually.equal(coef);
+    });
+
+    Then(/^I see a capital letter with value "([^\"]*)" in top$/, async (value) => {
+        await expect(element(by.id("cbResultValueLetter")).getText()).to.eventually.equal(value);
+    });
+
 })

@@ -20,13 +20,13 @@ const cdVeiculoMock: CadastroVeiculoMock = new CadastroVeiculoMock;
 
 // ROTAS DE LISTA PNEU / PNEU ELEMENTO
 
-routes.get('/pneus/:id', function (req: Request, res: Response) {
-    res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
-})
+routes.get('/pneus', function (req: Request, res: Response) {
+  res.send(JSON.stringify(cdPneu.getPneus()));
+});
 
 routes.get('/pneus/:id', function (req: Request, res: Response) {
     res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
-  })
+});
 
 routes.post('/pneu', function (req: Request, res: Response) {
     var confirmar: Pneu = <Pneu> req.body;
@@ -37,7 +37,7 @@ routes.post('/pneu', function (req: Request, res: Response) {
     } else {
       res.status(404).send({"falha": "cadastro de pneu falhou"});
     }
-})
+});
 
 routes.put('/pneu', function (req: Request, res: Response) {
     var pneu: Pneu = <Pneu> req.body;
@@ -47,7 +47,7 @@ routes.put('/pneu', function (req: Request, res: Response) {
     } else {
         res.status(404).send({"falha": "Atualizacão de pneu falhou"});
     }
-})
+});
 
 routes.delete('/pneu/:id', function (req: Request, res: Response){
     var id = req.params.id
@@ -58,7 +58,7 @@ routes.delete('/pneu/:id', function (req: Request, res: Response){
       } else {
         res.status(404).send({"falha": "remoção de pneu falhou"});
       }
-  })
+  });
 
 routes.get('/pneu/cadastro', (req: Request, res: Response) => {
     var { id } = req.body;
@@ -66,7 +66,7 @@ routes.get('/pneu/cadastro', (req: Request, res: Response) => {
     var bool = cdPneu.idNaoCadastrado(id);
     if(!bool) res.send({"success": "pneu cadastrado"});
     else res.status(404).send({"failure": "pneu nao cadastrado"});
-})
+});
 
 // ROTAS DE LISTA VEICULO
 

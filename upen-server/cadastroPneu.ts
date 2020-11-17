@@ -5,6 +5,24 @@ import e = require('express');
 export class CadastroDePneu {
     pneus : Pneu[] = [];
 
+    //TESTE ACEITACAO C/B
+    constructor(){
+        this.cadastroTeste();
+    }
+    cadastroTeste() {
+        var x = new Pneu();
+        var y = new Pneu();
+        x.id = "0001";
+        x.kms = 50;
+        x.custo = 200;
+        y.id = "0002";
+        y.kms = 55;
+        y.custo = 320;
+        this.cadastrar(x);
+        this.cadastrar(y);
+    }
+    //
+
     cadastrar(pneu: Pneu): String{
         var result = null;
         if(this.idNaoCadastrado(pneu.id)){
