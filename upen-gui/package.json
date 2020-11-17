@@ -1,5 +1,5 @@
 {
-  "name": "upen-gui",
+  "name": "upen",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.9",
-    "@angular/cdk": "^9.2.4",
+    "@angular/cdk": "^10.2.1",
     "@angular/common": "~9.1.9",
     "@angular/compiler": "~9.1.9",
     "@angular/core": "~9.1.9",
@@ -21,6 +21,10 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@ng-bootstrap/ng-bootstrap": "~7.0.0",
+    "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "ng2-charts": "^2.4.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
