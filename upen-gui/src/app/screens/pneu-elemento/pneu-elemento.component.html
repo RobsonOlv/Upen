@@ -94,7 +94,7 @@
             <td><div class="botao-evento"><input type="button" value="Atualizar Dados" class="botao-lateral-atualizar"(click)="atualizarPneu(pneu)"></div></td>
         </div>
         <div class="botao-lateral-adicione">
-            <td><div class="botao-evento"><input type="button" value="+" class="botao-lateral-adicionar"></div></td>
+            <td><div class="botao-evento"><input type="button" value="+" class="botao-lateral-adicionar" (click)="toggleField(0)"></div></td>
         </div>
     </div>
     <div class="eventos">
@@ -121,6 +121,32 @@
                     </div>
                 <td><div class="botao-evento"><input type="button" value="X" class="botao-evento-remover" (click)="deletarEvento(a)" ></div></td>
             </table>
+        </div>
+    </div>
+
+    <!--<button  id="myBtn" (click)="toggleField()" >{{clickModal}}</button>-->
+
+    <div id="myModal" class="modal" [class.modal1]="clickModal==1">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" (click)="toggleField(0)">&times;</span>
+                <h2>Cadastrar evento</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-entradas">
+                    <div class="modal-serviço">Serviço :</div>
+                    <input [(ngModel)]="evento[0]" class="modal-serviço-input" type="text" placeholder="Serviço">
+                    <div class="modal-data">Data :</div>
+                    <input [(ngModel)]="evento[1]" class="modal-data-input" type="date" placeholder="Data">
+                    <div class="modal-custo">Custo :</div>
+                    <input [(ngModel)]="evento[2]" class="mudal-custo-input" type="number" placeholder="Custo">
+                </div>
+                <button  id="addEv" (click)="toggleField(0); adicionarEvento(evento)">Adicionar</button>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
         </div>
     </div>
 </body>

@@ -16,11 +16,25 @@ export class PneuElementoComponent implements OnInit {
   atribuicao: [string, string, string, boolean] = ["", "", "", false]
   id: string;
   evento: [string, string, number] = ["", "", 0];
+  clickModal = -1;
+
+  modal = document.getElementById("myModal");
+  btn = document.getElementById("myBtn");
+  span = document.getElementsByClassName("close")[0];
 
   constructor(private activatedRoute: ActivatedRoute, 
     private route: Router, 
     private pneuElementoService: PneuElementoService,
     ) {}
+
+    public toggleField(int: number) {
+      if(int == 0){
+        this.clickModal = this.clickModal * (-1);
+      } else {
+        
+      }
+    
+    }
 
     adicionarEvento(evento: [string, string, number]){
       if(evento[0] != "" && evento[1] != "" && evento[2] != 0){

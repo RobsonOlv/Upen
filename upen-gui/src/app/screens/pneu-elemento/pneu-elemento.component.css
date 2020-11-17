@@ -584,3 +584,146 @@ input[class=pneu-input]:focus {
     box-shadow: 1px 1px #666;
     transform: translateY(1px);
 }
+
+/*///////////////////////////////////////////////////////////////*/
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal1 {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid rgb(79, 4, 122);
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(77, 1, 1);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    font-family: Roboto;
+    background-color: #1D0435;
+    color: white;
+}
+
+.modal-body {
+    height: 150px;
+}
+
+.modal-body-entradas {
+    position: relative;
+    width: 175px;
+    top: 5px;
+    left: 10px;
+    color: black;
+    font-weight: 600;
+    font-family: Roboto;
+}
+
+.modal-body-entradas > input {
+    background: #500997;
+    border: 4px solid #1D0435;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    outline: none;
+}
+
+#addEv {
+    position: relative;
+    background: rgb(115, 49, 168);
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-style: Roboto;
+    color: #FFFFFF;
+    border: 3px solid #000000;
+    font-size: 20px;
+    width: 105px;
+    height: 100px;
+    left: 205px;
+    top: -100px;
+    outline:none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+#addEv:hover {
+    background-color: #22033f;
+    color: #ffffff;
+}
+
+#addEv:active {
+    background-color: #01220f;
+    box-shadow: 1 1px rgb(155, 152, 152);
+    transform: translateY(2px);
+}
+
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #1D0435;
+    color: white;
+}
