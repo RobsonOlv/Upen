@@ -71,7 +71,7 @@ export class PneuElementoComponent implements OnInit {
                 .subscribe(
                   res => {
                     if (res == ar){
-                      console.log("funcionou");
+                      //itsok
                     }
                   }
                 );

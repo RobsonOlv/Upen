@@ -39,14 +39,14 @@ export class PneuElementoService {
   }
 
   getVeiculo(placa: string): Observable<Veiculo> {
-    return this.http.get<Veiculo>(this.servURL + "/veiculosMock/" + placa)
+    return this.http.get<Veiculo>(this.servURL + "/veiculos/" + placa)
               .pipe(
                 retry(2)
                 );
   }
 
   atualizarVeiculo(veiculo: Veiculo): Observable<Veiculo> {
-    return this.http.put<any>(this.servURL + "/veiculosMock",JSON.stringify(veiculo), {headers: this.headers})          .pipe( 
+    return this.http.put<any>(this.servURL + "/veiculos",JSON.stringify(veiculo), {headers: this.headers})          .pipe( 
       retry(2),
       map( res => {if (res.success) {return veiculo;} else {return null;}} )
     ); 

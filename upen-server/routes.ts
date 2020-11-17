@@ -10,13 +10,11 @@ import { CadastroVeiculo } from './cadastroVeiculo';
 import { CadastroHistorico} from './cadastroHistorico'
 import { CadastroDePneu } from './cadastroPneu';
 import { CadastroFuncionario } from './cadastroFuncionario';
-import { CadastroVeiculoMock } from './cadastroVeiculoMock';
 
 const cdHistorico: CadastroHistorico = new CadastroHistorico()
 const cdFuncionario: CadastroFuncionario = new CadastroFuncionario();
 const cdPneu: CadastroDePneu = new CadastroDePneu();
 const cdVeiculo: CadastroVeiculo = new CadastroVeiculo();
-const cdVeiculoMock: CadastroVeiculoMock = new CadastroVeiculoMock;
 
 // ROTAS DE LISTA PNEU / PNEU ELEMENTO
 
@@ -163,8 +161,8 @@ routes.delete('/funcionarios/:id', (req: Request, res: Response) => {
 
 // ROTAS VEICULO ELEMENTO
 
-routes.get('/veiculo', (req: Request, res: Response) => {
-    var placa: string = String(req.query.placa);
+routes.get('/veiculo/:placa', (req: Request, res: Response) => {
+    var placa: string = String(req.params.placa);
   
     var veiculo: Veiculo = cdVeiculo.retornarVeiculo(placa);
     if(!veiculo)  res.status(404).send({"erro": "Veiculo nao cadastrado!"});
@@ -179,25 +177,6 @@ routes.get('/veiculo', (req: Request, res: Response) => {
     if(!veiculo) res.status(404).send({"erro": "Veiculo nao cadastrado!"});
 
     res.send({ veiculo });
-});
-
-//ROTAS MOCK
-routes.get('/veiculosMock/:id', function (req: Request, res: Response){
-  res.send(JSON.stringify(cdVeiculoMock.getVeiculo(req.params.id)))
-});
-
-routes.get('/veiculosMock', function (req: Request, res: Response) {
-  res.send(JSON.stringify(cdVeiculoMock.listarVeiculos()))
-});
-
-routes.put('/veiculosMock', function (req: Request, res: Response) {
-  var veiculo: Veiculo = <Veiculo> req.body;
-  veiculo = cdVeiculoMock.atualizar(veiculo);
-  if (veiculo) {
-    res.send({"success": "O veiculo foi atualizado com sucesso"});
-  } else {
-    res.send({"failure": "O veiculo não pode ser atualizado"});
-  }
 });
 
 export { routes };
