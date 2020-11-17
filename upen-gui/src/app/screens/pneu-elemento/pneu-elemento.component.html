@@ -1,1 +1,86 @@
-<p>pneu-elemento works!</p>
+<body>
+    <div class="pneu-id">
+        <div class="pneu-id-texto">
+            <h3> ID# {{pneu.id}} </h3>
+        </div>
+        <div class="pneu-id-barra"></div>
+    </div>
+    <img src="https://i.imgur.com/4ze3T4y.png" height="286" width="282" id="imgPneu" title="Pneu.png" alt="Pneu.png">
+    <div class="veiculo">
+        <div class="veiculo-title"><h3>Veiculo</h3></div>
+        <div class="veiculo-infos">
+            <div class="veiculo-info">
+                <div class="veiculo-placa">Placa:</div>
+                <input [(ngModel)]="atribuicao[0]" type="veiculo-input" id="veiculo-placa" placeholder="{{pneu.atribuicao[0]}}">
+            </div>
+            <div class="veiculo-info">
+                <div class="veiculo-posicao">Pos:</div>
+                <input [(ngModel)]="atribuicao[1]" type="veiculo-input" id="veiculo-posicao" placeholder="{{pneu.atribuicao[1]}}">
+            </div>
+            <div class="veiculo-info">
+                <div class="veiculo-lado">Lado:</div>
+                <input [(ngModel)]="atribuicao[2]" type="veiculo-input" id="veiculo-lado" placeholder="{{pneu.atribuicao[2]}}">
+            </div>
+        </div>
+        <div class="veiculo-atribuicao">
+            <td *ngIf="pneu.atribuicao[3];else elseBlock" id="veiculo-atribuicao-valor" class="veiculo-atribuicao-true">V</td>
+            <ng-template #elseBlock><td id="veiculo-atribuicao-valor" class="veiculo-atribuicao-false">X</td></ng-template>
+        </div>
+        <div class="botoes">
+            <td class="botao-atribuir"><button class="atribuir" name="atribucao-botao"(click)="atribuirVeiculo(atribuicao)">Atribuir</button></td>
+            <td class="botao-desatribuir"><button class="desatribuir" name="desatribuicao-botao"(click)="desatribuirVeiculo(pneu)">Desatribuir</button></td>
+        </div>
+    </div>
+    <div class="pneu-infos">
+        <div class="pneu-infos-tabela">
+            <div class="pneu-infos-campo" id="camposEsq">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Marca:</div>
+                    <input [(ngModel)]="pneu.marca" class="pneu-input" type="text" id="pneu-marca" placeholder="{{pneu.marca}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposDir">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Aro:</div>
+                    <input [(ngModel)]="pneu.aro" class="pneu-input" type="number" onKeyPress="if(this.value.length > 1) return false;" min="0" max="99" id="pneu-aro" placeholder="{{pneu.aro}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposEsq">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Data:</div>
+                    <input [(ngModel)]="pneu.data" class="pneu-input" type="date" min="1901-01-01" max="2020-11-17" id="pneu-data" placeholder="{{pneu.data}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposDir">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Larg:</div>
+                    <input [(ngModel)]="pneu.largura" class="pneu-input" type="number" onKeyPress="if(this.value.length > 1) return false;" id="pneu-largura" placeholder="{{pneu.largura}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposEsq">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Cap:</div>
+                    <input [(ngModel)]="pneu.capacidade" class="pneu-input" type="number" max="199" min="20" id="pneu-capacidade" placeholder="{{pneu.capacidade}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposDir">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Custo:</div>
+                    <input [(ngModel)]="pneu.custo" class="pneu-input" type="number" step="0.1" id="pneu-custo" placeholder="{{pneu.custo}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposEsq">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Kms:</div>
+                    <input [(ngModel)]="pneu.kms"class="pneu-input" type="number" id="pneu-kms" placeholder="{{pneu.kms}}">
+                </div>
+            </div>
+            <div class="pneu-infos-campo" id="camposDir">
+                <div class="pneu-infos-campo-div">
+                    <div class="pneu-campo">Tread:</div>
+                    <input [(ngModel)]="pneu.treadwear"class="pneu-input" type="number" max="620" min="60" onKeyPress="if(this.value.length > 2) return false;" id="pneu-treadwear" placeholder="{{pneu.treadwear}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

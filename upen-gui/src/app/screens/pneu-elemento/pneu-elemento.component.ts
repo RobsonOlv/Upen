@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Observable } from 'rxjs'
+import { Pneu } from '../../../../../common/pneu';
+import { PneuElementoService } from '../../services/PneuElementoService/pneu-elemento.service'
 
 @Component({
   selector: 'app-pneu-elemento',
@@ -6,10 +11,99 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pneu-elemento.component.css']
 })
 export class PneuElementoComponent implements OnInit {
+  
+  pneu: Pneu = new Pneu();
+  atribuicao: [string, string, string, boolean] = ["", "", "", false]
+  id: string;
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor(private activatedRoute: ActivatedRoute, 
+    private route: Router, 
+    private pneuElementoService: PneuElementoService,
+    ) {}
 
+    atribuirVeiculo(atr:[string, string, string, boolean]){
+      atr[3] = true;
+      this.pneuElementoService.getVeiculo(atr[0])
+      .subscribe(
+        ar => {
+          if(ar == null){
+            alert("Veículo não cadastrado");
+          } else {
+            if(ar.pneus.length < 4) {
+              ar.pneus.push(this.pneu);
+              this.pneuElementoService.atualizarVeiculo(ar)
+                .subscribe(
+                  res => {
+                    if (res == ar){
+                      console.log("funcionou");
+                    }
+                  }
+                );
+              this.pneu.atribuicao = atr;
+              this.atualizarPneu(this.pneu);
+            } else {
+              alert("Não foi possível inserir o pneu ao veículo informado.")
+            }
+          }
+        }
+      );
+    }
+
+    desatribuirVeiculo(pneu: Pneu):void {
+      this.pneuElementoService.getVeiculo(this.pneu.atribuicao[0])
+      .subscribe(
+        ar => {
+          if(ar == null){
+            this.pneu.atribuicao = ["", "", "", false];
+            this.atualizarPneu(this.pneu);
+          } else {
+            for (let index = 0; index < ar.pneus.length; index++) {
+              if(ar.pneus[index].id == this.pneu.id){
+                ar.pneus.splice(index, 1);
+              }
+            }
+            this.pneuElementoService.atualizarVeiculo(ar)
+              .subscribe(
+                res => {
+                  if (res == ar){
+                    console.log("plk");
+                  }
+                }
+              );
+            this.pneu.atribuicao = ["", "", "", false];
+            this.atualizarPneu(this.pneu);
+          }
+        }
+      );
+    }
+
+    atualizarPneu(pneu: Pneu): void {
+      this.pneuElementoService.atualizar(pneu)
+        .subscribe(
+          res => {
+            if (res == pneu){
+              this.pneu = res;
+            }
+          }
+        )
+    }
+    
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    this.pneuElementoService.getPneu(this.id)
+      .subscribe(
+        ar => {
+          if(ar == null){
+            this.route.navigate(['/pneus']);
+            alert("Pneu não cadastrado.");
+          } else {
+            this.pneu = ar;
+          }
+        }
+      );
+    }
 }

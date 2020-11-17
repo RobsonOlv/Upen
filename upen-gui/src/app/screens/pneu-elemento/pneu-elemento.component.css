@@ -1,0 +1,314 @@
+body {
+    background: #362F36;
+    height: 535px;
+    margin:0;
+}
+
+.pneu-id {
+    position: relative;
+    left: 35px;
+    top: 26px;
+    height: 70px;
+    width: 450px;
+}
+
+.pneu-id-texto {
+    position: relative;
+    font-family: Roboto;
+    color: #CFC7C7;
+    top: 7px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.pneu-id-barra {
+    position: relative;
+    background: #1D0435;
+    top: 2px;
+    width: 450px;
+    height: 10px;
+    border-radius: 20px;
+}
+
+#imgPneu {
+    position: relative;
+    left: 90px;
+    top: 65px;
+}
+
+.veiculo {
+    background: #160527;
+    position: relative;
+    height: 115px;
+    top: 55px;
+    width: 220px;
+    left: 130px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+}
+
+.veiculo-title {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-family: roboto;
+    margin-left: 10px;
+}
+
+.veiculo-atribuicao {
+    position: relative;
+    height: 60px;
+    width: 45px;
+    top: -105px;
+    left: 152px;
+    align-content: center;
+}
+
+.veiculo-atribuicao > ng-template {
+    color: #B40909;
+}
+
+.veiculo-atribuicao-true {
+    position: relative;
+    font-family: Roboto;
+    top: -3px;
+    height: 30px;
+    width: 45px;
+    font-weight: 500;
+    font-size: 50px;
+    text-align: center;
+    color: green;
+}
+
+.veiculo-atribuicao-false {
+    position: relative;
+    font-family: Roboto;
+    top: -3px;
+    height: 30px;
+    width: 45px;
+    font-weight: 500;
+    font-size: 50px;
+    text-align: center;
+    color: #B40909;
+}
+
+.botoes {
+    position: relative;
+    width: 68px;
+    height: 42px;
+    top: -106px;
+    left: 140px;
+}
+
+.botoes > td {
+    position: relative;
+    display: flex;
+    margin-bottom: 3px;
+    align-content: center;
+}
+
+.botao-atribuir {
+    position: relative;
+    margin-left: 1px;
+    width: 47px;
+}
+
+.atribuir {
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    background: #5DA842;
+    padding: 1px 11px;
+    font-family: Roboto;
+    color: #FFFFFF;
+    border: 2px solid #5DA842;
+    transition-duration: 0.4s;
+    outline:none;
+    cursor: pointer;
+}
+
+.atribuir:hover {
+    background-color: #160527;
+    color: #FFFFFF;
+}
+
+.atribuir:active {
+    background-color: #3e8e41;
+    box-shadow: 0 1px #666;
+    transform: translateY(1px);
+}
+
+.desatribuir {
+    background: #861111;
+    border-radius: 10px;
+    font-family: Roboto;
+    padding: 2px 4px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border: 2px solid #861111;
+    transition-duration: 0.4s;
+    outline:none;
+    cursor: pointer;
+}
+
+.desatribuir:hover {
+    background-color: #160527;
+    color: #FFFFFF;
+}
+
+.desatribuir:active {
+    background-color: #5c0f0f;
+    transform: translateY(1px);
+  }
+
+
+.veiculo-infos {
+    position: relative;
+    width: 125px;
+    height: 70px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.veiculo-infos > div {
+    position: relative;
+    display: flex;
+    background: #FFFFFF;
+    height: 22px;
+    width: 125px;
+    margin-bottom: 3px;
+    border: 3px solid #7E49B4;
+    border-radius: 10px;
+}
+
+.veiculo-info > div{
+    position: relative;
+    width: 20px;
+    display: inline-block;
+    font-size: 16px;
+    align-items: center;
+    padding: 2px;
+    top: -3px;
+}
+
+input[type=veiculo-input] {
+    position: relative;
+    display: inline-block;
+    left: 25px;
+    padding: 5px;
+    width: 74px;
+    border: 1px solid #CCC;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type=veiculo-input]::placeholder {
+    color: #474444;
+}
+
+input[type=veiculo-input]:focus {
+    border: 2px solid #b185b1;
+}
+
+.pneu-infos {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    left: 700px;
+    top: -435px;
+
+    background: #8B5095;
+    border-radius: 20px;
+    border: 10px solid #1D0435;
+}
+
+.pneu-infos-tabela {
+    position: relative;
+    top: 21px;
+    left: 0px;
+    width: 426px;
+    height: 289px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: initial;
+    margin: auto;
+}
+
+.pneu-infos-campo {
+    height: 46px;
+    width: 190px;
+}
+
+#camposEsq { 
+    margin-right: 46px;
+    margin-bottom: 35px;
+}
+
+.pneu-infos-campo > div {
+    background: #500997;
+    height: 46px;
+    border: 7px solid #1D0435;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    align-items: center;
+}
+
+.pneu-infos-campo-div > div {
+    position: relative;
+    top: 6px;
+    left: 7px;
+    display: inline-block;
+    font-size: 16px;
+    align-items: center
+}
+
+.pneu-infos-campo-div > input {
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    float: right;
+    width: 110px;
+    top: 2px;
+    left: -7px;
+    font-size: 14px;
+    padding: 6px 10px;
+    border: none;
+    -webkit-transition: 0.3s;
+    background: #8634d8;
+    transition: 0.3s;
+    border-radius: 3px;
+    outline: none;
+    color: #FFFFFF;
+}
+
+input[class=pneu-input]::placeholder {
+    color: #dfdbdb;
+}
+
+input[class=pneu-input]:focus {
+    border: 1px solid #b185b1;
+}
+
+.pneu-infos-campo-div > input[type=date]{
+    font-family: arial, sans-serif;
+    height: 28px;
+    align-items: center;
+    justify-items: left;
+}
+
+.pneu-infos-campo-div > input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    margin-left: 2px;
+    margin-right: -10px;
+    left: 50px;
+}
