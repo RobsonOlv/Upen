@@ -85,7 +85,7 @@
     </div>
     <div class="botoes-laterais">
         <div class="botao-lateral-cb">
-            <td><div class="botao-evento"><input type="button" value="C/B" class="botao-lateral-custo-beneficio"></div></td>
+            <td><div class="botao-evento"><input type="button" value="C/B" class="botao-lateral-custo-beneficio" (click)="toggleField(1)"></div></td>
         </div>
         <div class="botao-lateral-exclua">
             <td><div class="botao-evento"><input type="button" value="Excluir" class="botao-lateral-excluir" (click)="deletarPneu(pneu.id)" ></div></td>
@@ -94,7 +94,7 @@
             <td><div class="botao-evento"><input type="button" value="Atualizar Dados" class="botao-lateral-atualizar"(click)="atualizarPneu(pneu)"></div></td>
         </div>
         <div class="botao-lateral-adicione">
-            <td><div class="botao-evento"><input type="button" value="+" class="botao-lateral-adicionar" (click)="toggleField(0)"></div></td>
+            <td><div class="botao-evento"><input type="button" value="+" class="botao-lateral-adicionar"(click)="toggleField(0)"></div></td>
         </div>
     </div>
     <div class="eventos">
@@ -124,6 +124,7 @@
         </div>
     </div>
 
+
     <!--<button  id="myBtn" (click)="toggleField()" >{{clickModal}}</button>-->
 
     <div id="myModal" class="modal" [class.modal1]="clickModal==1">
@@ -149,4 +150,47 @@
             </div>
         </div>
     </div>
+
+    <div id="myModal" class="modal" [class.modal1]="clickModal2==1">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" (click)="toggleField(1)">&times;</span>
+                <h2>Custo / Benefício</h2>
+            </div>
+            <div class="modal-body-cb">
+                <div class="modal-body-dados">
+                    <div class="modal-body-dados-kms">
+                        Kms(mil): {{pneu.kms}}
+                    </div>
+                    <div class="modal-body-dados-custo">
+                        Custo: R$ {{getCost()}}
+                    </div>
+                </div>
+                <div class="modal-body-avaliacao">
+                    <div id="cbResultValue">
+                        <ng-container *ngIf="getCBC()>=0.88; then first; else second" ></ng-container>
+                        <ng-template #first><td id="cbResultValueLetter">A</td></ng-template>
+                        <ng-template #second>
+                            <ng-container *ngIf="getCBC()>=0.76; then third; else fourth"></ng-container>
+                        </ng-template>
+                        <ng-template #third><td id="cbResultValueLetter">B</td></ng-template>
+                        <ng-template #fourth>
+                            <ng-container *ngIf="getCBC()>=0.6; then fifth; else sixth"></ng-container>
+                        </ng-template>
+                        <ng-template #fifth><td id="cbResultValueLetter">C</td></ng-template>
+                        <ng-template #sixth><td id="cbResultValueLetter">D</td></ng-template>
+                    </div>
+                    <div id="cbResult">
+                        <div id="cbResult1">Km/C: {{((pneu.kms/getCost())*1000).toFixed(2)}} </div>
+                        <div id="cbResult2">Coef: {{(getCBC()).toFixed(2)}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
 </body>

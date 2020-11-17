@@ -313,6 +313,7 @@ input[class=pneu-input]:focus {
     left: 50px;
 }
 
+
 .botoes-laterais {
     position: relative;
     width: 110px;
@@ -726,4 +727,116 @@ input[class=pneu-input]:focus {
     padding: 2px 16px;
     background-color: #1D0435;
     color: white;
+}
+
+
+.modal-body-entradas > input[type=date]{
+    font-family: arial, sans-serif;
+    height: 28px;
+    align-items: center;
+    justify-items: left;
+}
+
+.modal-body-entradas > input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: rgba(0, 236, 98, 0);
+    left: 50px;
+}
+
+.modal-body-cb {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-body-dados {
+    display: inline-block;
+    justify-content: center;
+    width: 50%;
+    top: 5px;
+    left: 10px;
+    color: black;
+    font-family: Roboto;
+}
+
+.modal-body-dados > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #500997;
+    height: 46px;
+    margin: auto;
+    margin-top: 20px;
+    width: 80%;
+    border: 7px solid #1D0435;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+}
+
+.modal-body-avaliacao {
+    display: inline-block;
+    justify-content: center;
+    width: 50%;
+}
+
+#cbResultValue {
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    margin: auto;
+    margin-top: 6px;
+    align-content: center;
+
+
+    width: 60%;
+    height: 50%;
+    background: rgb(115, 49, 168);
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-style: Roboto;
+    color: #FFFFFF;
+    border: 3px solid #000000;
+    font-size: 60px;
+
+    outline:none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+#cbResultValueLetter{
+    position: relative;
+    align-content: center;
+    left: 27px;
+}
+
+#cbResult {
+    margin: auto;
+
+    text-align: center;
+
+    margin-top: 6px;
+    position: relative;
+    width: 80%;
+    height: 40%;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fdfdfd;
+    background: #1D0435;
+}
+
+#cbResult>div{
+    position: relative;
+    top: 4px;
+    width: 100%;
+    height: 40%;
+}
+
+#cbResult1 {
+    margin-bottom: 4px;
 }

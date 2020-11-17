@@ -17,6 +17,7 @@ export class PneuElementoComponent implements OnInit {
   id: string;
   evento: [string, string, number] = ["", "", 0];
   clickModal = -1;
+  clickModal2 = -1;
 
   modal = document.getElementById("myModal");
   btn = document.getElementById("myBtn");
@@ -31,7 +32,7 @@ export class PneuElementoComponent implements OnInit {
       if(int == 0){
         this.clickModal = this.clickModal * (-1);
       } else {
-        
+        this.clickModal2 = this.clickModal2 * (-1);
       }
     
     }
@@ -136,6 +137,25 @@ export class PneuElementoComponent implements OnInit {
           }
         )
     }
+
+    getCost(): number {
+      var count : number = 0;
+      for (let i = 0; i < this.pneu.eventos.length; i++) {
+        count = Number(count) + Number(this.pneu.eventos[i][2]);
+      } 
+      count = Number(count) + Number(this.pneu.custo);
+      return count;
+    }
+
+    getCBC(): number {
+      var cb = Number(this.pneu.kms) / this.getCost();
+      cb += (1.75*cb) + 0.14;
+      if(cb > 1){
+        return 1;
+      }
+      return cb;
+    }
+
     
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
