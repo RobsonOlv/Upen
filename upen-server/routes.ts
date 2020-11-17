@@ -35,7 +35,7 @@ routes.post('/pneu', function (req: Request, res: Response) {
       var historico = cdHistorico.cadastrar(confirmar.id,"Cadastrou","Pneu"); 
       if (historico) {res.send({"success": "cadastro de pneu com sucesso"});}
     } else {
-      res.status(404).send({"falha": "cadastro de pneu falhou"});
+      res.send({"failed": "cadastro de pneu falhou"});
     }
 });
 
@@ -45,7 +45,7 @@ routes.put('/pneu', function (req: Request, res: Response) {
     if (pneu) {
       res.send({"success": "O pneu foi atualizado com sucesso"});
     } else {
-        res.status(404).send({"falha": "Atualizacão de pneu falhou"});
+      res.send({"failure": "O pneu não pode ser atualizado"});
     }
 });
 
@@ -56,7 +56,7 @@ routes.delete('/pneu/:id', function (req: Request, res: Response){
         var historico = cdHistorico.cadastrar(id,"Removeu","Pneu"); 
         if (historico) {res.send({"success": "O pneu foi removido com sucesso"})}
       } else {
-        res.status(404).send({"falha": "remoção de pneu falhou"});
+        res.send({"failure": "O pneu não pode ser removido"});
       }
   });
 
@@ -67,6 +67,35 @@ routes.get('/pneu/cadastro', (req: Request, res: Response) => {
     if(!bool) res.send({"success": "pneu cadastrado"});
     else res.status(404).send({"failure": "pneu nao cadastrado"});
 });
+
+routes.delete('/lixeirapneus/:id', function(req: Request, res: Response){
+  var id = req.params.id;
+  var index = cdPneu.removerPermanente(id);
+  if(index != null){
+      res.send({"success": "o pneu foi removido permanentemente com sucesso", "index": index});
+      var historico = cdHistorico.cadastrar(id,"Removeu Permanentemente","Pneu");
+      if (historico) {res.send({"success": "o pneu foi removido com sucesso", "index": index})}
+      else { res.status(404).send({"failure": "Remoção de pneu falhou"});}
+  }else{
+      res.status(404).send({"failure": "Remoção permanente de pneu falhou"});
+  }
+})
+
+routes.post('/lixeirapneus', (req: Request, res: Response) => {
+  var pneu : Pneu = <Pneu> req.body;
+  var index = cdPneu.restaurarPneu(pneu);
+  if(pneu != null) {
+      var historico = cdHistorico.cadastrar(pneu.id,"Cadastrou","Pneu"); 
+      if (historico) {res.send({"success": "Pneu cadastrado com sucesso", "index": index});}
+      else { res.send({"failure": "Cadastro de pneu falhou"});}
+  }
+  else 
+      res.send({"failure": "Cadastro de pneu falhou"});
+})
+
+  routes.get('/lixeirapneus', (req: Request, res: Response) => { 
+    res.send(JSON.stringify(cdPneu.listarLixeira()));
+  });
 
 // ROTAS DE LISTA VEICULO
 
