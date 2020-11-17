@@ -18,8 +18,8 @@ const cdVeiculo: CadastroVeiculo = new CadastroVeiculo();
 
 // ROTAS DE LISTA PNEU / PNEU ELEMENTO
 
-routes.get('/pneus/:id', function (req: Request, res: Response) {
-    res.send(JSON.stringify(cdPneu.getPneu(req.params.id)));
+routes.get('/pneus', function (req: Request, res: Response) {
+  res.send(JSON.stringify(cdPneu.getPneus()));
 })
 
 routes.get('/pneus/:id', function (req: Request, res: Response) {
