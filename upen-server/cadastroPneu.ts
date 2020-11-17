@@ -7,6 +7,7 @@ export class CadastroDePneu {
     lixeiraPneus : Pneu[] = [];
 
     cadastrar(pneu: Pneu): String{
+
           var result = null;
           if(this.idNaoCadastrado(pneu.id) && this.checkTypes(pneu)){
             result = new Pneu();
@@ -15,6 +16,7 @@ export class CadastroDePneu {
             return "success";
         }
         return "failed";
+
     }
 
     checkTypes(pneu: Pneu): boolean {

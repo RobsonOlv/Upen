@@ -1,14 +1,14 @@
 {
   "name": "upen-server",
   "version": "1.0.0",
-  "description": "A backend to main aplication",
+  "description": "Servidor Upen",
   "main": "upen-server.js",
   "scripts": {
     "test": "npm run tsc && jasmine --config=./spec/support/jasmine.json",
     "tsc": "tsc",
     "start": "npm run tsc && node compiledCode/upen-server/upen-server.js"
   },
-  "author": "Upen Team",
+  "author": "Upen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
