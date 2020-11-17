@@ -83,4 +83,44 @@
             </div>
         </div>
     </div>
+    <div class="botoes-laterais">
+        <div class="botao-lateral-cb">
+            <td><div class="botao-evento"><input type="button" value="C/B" class="botao-lateral-custo-beneficio"></div></td>
+        </div>
+        <div class="botao-lateral-exclua">
+            <td><div class="botao-evento"><input type="button" value="Excluir" class="botao-lateral-excluir" (click)="deletarPneu(pneu.id)" ></div></td>
+        </div>
+        <div class="botao-lateral-atualize">
+            <td><div class="botao-evento"><input type="button" value="Atualizar Dados" class="botao-lateral-atualizar"(click)="atualizarPneu(pneu)"></div></td>
+        </div>
+        <div class="botao-lateral-adicione">
+            <td><div class="botao-evento"><input type="button" value="+" class="botao-lateral-adicionar"></div></td>
+        </div>
+    </div>
+    <div class="eventos">
+        <table>
+            <div class="eventos-elementos">
+                <tr>
+                    <td class="elementos">Serviço</td>
+                    <td class="elementos">|</td>
+                    <td class="elementos">Data</td>
+                    <td class="elementos">|</td>
+                    <td class="elementos">Custo</td>
+                </tr>
+            </div>
+        </table>
+        <div class="lista-eventos">
+            <table *ngFor="let a of pneu.eventos" > 
+                <div class="evento-bolinha"></div>
+                <div class="bloco">
+                        <div class="divEvento-info"><td class="evento-info">{{a[0]}}</td></div>
+                        <div class="divEvento-info"><td class="evento-info">|</td></div>
+                        <div class="divEvento-info"><td class="evento-info">{{a[1]}}</td></div>
+                        <div class="divEvento-info"><td class="evento-info">|</td></div>
+                        <div class="divEvento-info"><td class="evento-info">R${{a[2]}}</td></div>
+                    </div>
+                <td><div class="botao-evento"><input type="button" value="X" class="botao-evento-remover" (click)="deletarEvento(a)" ></div></td>
+            </table>
+        </div>
+    </div>
 </body>

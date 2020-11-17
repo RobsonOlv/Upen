@@ -15,12 +15,32 @@ export class PneuElementoComponent implements OnInit {
   pneu: Pneu = new Pneu();
   atribuicao: [string, string, string, boolean] = ["", "", "", false]
   id: string;
-
+  evento: [string, string, number] = ["", "", 0];
 
   constructor(private activatedRoute: ActivatedRoute, 
     private route: Router, 
     private pneuElementoService: PneuElementoService,
     ) {}
+
+    adicionarEvento(evento: [string, string, number]){
+      if(evento[0] != "" && evento[1] != "" && evento[2] != 0){
+        evento[2] = evento[2]
+        this.pneu.eventos.unshift(evento);
+        this.evento = ["", "", 0];
+        this.atualizarPneu(this.pneu);
+      } else {
+        alert("Preencha todos os campos.")
+      }
+    }
+
+    deletarEvento(evento: [string, string, number]){
+      for (let index = 0; index < this.pneu.eventos.length; index++) {
+        if(this.pneu.eventos[index] == evento){
+          this.pneu.eventos.splice(index, 1);
+          this.atualizarPneu(this.pneu);
+        }     
+      }
+    }
 
     atribuirVeiculo(atr:[string, string, string, boolean]){
       atr[3] = true;
@@ -84,6 +104,20 @@ export class PneuElementoComponent implements OnInit {
           res => {
             if (res == pneu){
               this.pneu = res;
+            }
+          }
+        )
+    }
+
+    deletarPneu(id: string): void {
+      this.desatribuirVeiculo(this.pneu);
+      this.pneuElementoService.deletar(id)
+        .subscribe(
+          res => {
+            if(res == id){
+              this.pneu = new Pneu();
+              this.route.navigate(['/pneus']);
+              alert("O pneu " + id + " foi removido");
             }
           }
         )
